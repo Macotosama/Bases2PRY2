@@ -1,0 +1,35 @@
+<div class="principal">
+    <div class="example-large-box mat-elevation-z4">
+        <div class="inputCorreoElectronico">
+            <form class="inputFromCorreoElectronico">
+                    <mat-form-field class="inputFormFieldCorreoElectronico">
+                    <mat-label>Correo electrónico</mat-label>
+                    <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                    Porfavor ingrese su correo electrónico
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                    Porfavor ingrese su <strong>correo electrónico</strong>
+                    </mat-error>
+                </mat-form-field>
+            </form>
+        </div>
+        <br>
+        <div class="inputContrasena">
+            <form class="inputFromContrasena">
+                    <mat-form-field class="inputFormFieldContrasena">
+                    <mat-label>Contraseña</mat-label>
+                    <input type="email" matInput [formControl]="numFormControl" placeholder="Ex. pat@example.com">
+                    <mat-error *ngIf="numFormControl.invalid">
+                    Contraseña incorrecta
+                    </mat-error>
+                    <mat-error *ngIf="numFormControl.hasError('required')">
+                    Porfavor ingrese la <strong>contraseña</strong>
+                    </mat-error>
+                </mat-form-field>
+            </form>
+        </div>
+        <br>
+        <button mat-Flat-button class="buttonLogin">XD</button>
+    </div>
+</div>

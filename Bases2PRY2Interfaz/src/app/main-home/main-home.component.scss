@@ -1,0 +1,79 @@
+.principal
+{
+    background-color: #7100F0;
+    width: auto;
+    height: 50%;
+}
+
+// .principal:hover
+// {
+//   background-color: white;
+// }
+  .example-large-box
+  {
+    background-color: #BC88F8;
+    position: fixed;
+    left: 30%;
+    top: 20%;
+    height: 400px;
+    width: 600px;
+    display: flex;
+    //align-items: center;
+    //justify-content: center;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+  }
+
+  .inputCorreoElectronico
+  {
+    position: absolute;
+    left: 25%;
+    top: 30%;
+    background-color: white;
+    border-radius: 30px;
+    width: 300px;
+    height: 65px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .inputFromCorreoElectronico
+  {
+    position: absolute;
+    left: 25px;
+  }
+
+  .inputFormFieldCorreoElectronico
+  {
+    width: 250px;
+  }
+
+  .inputContrasena
+  {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    background-color: white;
+    border-radius: 30px;
+    width: 300px;
+    height: 65px;
+    justify-content: center;
+  }
+
+  .inputFromContrasena
+  {
+    position: absolute;
+    left: 25px;
+  }
+
+  .inputFormFieldContrasena
+  {
+    width: 250px;
+  }
+
+  .buttonLogin
+  {
+    width: 4 em;
+    height: 2 em;
+  }
