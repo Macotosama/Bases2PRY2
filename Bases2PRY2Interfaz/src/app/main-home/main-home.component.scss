@@ -13,6 +13,25 @@
   top: 20%;
 }
 
+/* active tab */
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active{
+  color:white;
+  //background-color: green;
+  }
+
+::ng-deep .mat-tab-label
+{
+  color: white;
+}
+
+::ng-deep .mat-ink-bar {
+  background-color: var(--primary-color,#ffffff) !important;
+  }
+
+mat-tab
+{
+  color: white;
+}
 // .principal:hover
 // {
 //   background-color: white;
