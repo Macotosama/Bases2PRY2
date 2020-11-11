@@ -74,6 +74,39 @@
 
   .buttonLogin
   {
-    width: 4 em;
-    height: 2 em;
+    color: white;
+    background-color: #6550C5;
+    position: absolute;
+    left: 37%;
+    top: 70%;
+    width: 10em;
+    height: 3em;
+    border-radius: 30px;
+  }
+
+  .linkRegister
+  {
+    position: absolute;
+    top: 85%;
+    left: 42.5%;
+    color: white;
+  }
+
+  .tittleOnePice
+  {
+    position: absolute;
+    top: 7%;
+    left: 28%;
+    font-size: 15em;
+    color: white;
+    font-family: Candara;
+  }
+
+  .spanTittleLogin
+  {
+    position: absolute;
+    left: 32%;
+    top: 10%;
+    font-size: 4em;
+    color: white;
   }
