@@ -26,7 +26,7 @@
 .tabLogin
 {
   color: white;
-  position: fixed;
+  position: absolute;
   left: 30%;
   top: 20%;
 }
@@ -156,4 +156,25 @@ mat-tab
     top: 10%;
     font-size: 4em;
     color: white;
+  }
+
+  .example-card
+  {
+    max-width: 400px;
+  }
+
+  .popularItems
+  {
+    position: absolute;
+    top: 80%;
+    width: 100%;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+  }
+
+  .columnas
+  {
+    padding: 1em;
   }
