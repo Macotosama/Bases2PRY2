@@ -18,12 +18,15 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
+import { HomebusinessComponent } from './homebusiness/homebusiness.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
     AppComponent,
     NarraDeNavegacionComponent,
     MainHomeComponent,
+    HomebusinessComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +43,8 @@ import { MatCardModule } from '@angular/material/card';
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
-    MatCardModule
+    MatCardModule,
+    MatChipsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,17 +1,42 @@
-.sidenav-container {
+.sidenav-container
+{
   height: 100%;
 }
 
-.sidenav {
+.sidenav
+{
   width: 200px;
 }
 
-.sidenav .mat-toolbar {
+.sidenav .mat-toolbar
+{
   background: inherit;
 }
 
-.mat-toolbar.mat-primary {
+.matToolbarPrincipal
+{
+  background-color: #7100F0;
+  color: white;
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.matToolbarSidnev
+{
+  color: black;
+}
+
+.TituloToback
+{
+  position: absolute;
+  left: 30%;
+  font-family: Candara;
+  font-size: 4em;
+  cursor: pointer;
+}
+
+.logo
+{
+  width: 1em;
 }
