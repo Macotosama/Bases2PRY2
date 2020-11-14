@@ -1,18 +1,55 @@
-.maincotainer {
+.mainContainer {
     position: absolute;
     //top: 80%;
     width: 100%;
-    align-items: right;
+    align-items: center;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3em;
+    grid-template-columns: repeat(2, 50%);
+
+    justify-items: center;
+    // justify-content: stretch;
+    // align-content: stretch;
+    background-color: lawngreen;
+    
+    //gap: 1em;
 }
 .inputs {
+    //position: inherit;
     background-color: #BC88F8;
-    height: 400px;
-    width: 600px;
-    display: flex;
+    height: 55em;
+    width: 60em;
+    //display: flex;
     margin: 16px;
     padding: 16px;
     border-radius: 8px;
+    justify-content: center;
+    align-content: center;
+
+    // grid-column-start: 1; 
+    // grid-column-end: 1; 
+    //grid-row-start: 1; 
+    //grid-row-end: 3; 
+}
+.inputNameCategory
+{
+  position: absolute;
+  left: 5%;
+  top: 30%;
+  background-color: white;
+  border-radius: 30px;
+  width: 300px;
+  height: 65px;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputFromNameCategory
+{
+  position: absolute;
+  left: 25px;
+}
+
+.inputFormFieldNameCategory
+{
+  width: 250px;
 }

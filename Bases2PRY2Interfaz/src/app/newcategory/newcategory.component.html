@@ -1,6 +1,20 @@
 <app-narra-de-navegacion></app-narra-de-navegacion>
 <div class="mainContainer">
     <div class="inputs">
+        <div class="inputNameCategory">
+            <form class="inputFromNameCategory">
+                    <mat-form-field class="inputFormFieldNameCategory">
+                    <mat-label>Nombre</mat-label>
+                    <input type="email" matInput [formControl]="nameFormControl" placeholder="Nueva categoría">
+                    <mat-error *ngIf="nameFormControl.invalid && !nameFormControl.hasError('required')">
+                    Porfavor ingrese su correo electrónico
+                    </mat-error>
+                    <mat-error *ngIf="nameFormControl.hasError('required')">
+                    Porfavor ingrese su <strong>correo electrónico</strong>
+                    </mat-error>
+                </mat-form-field>
+            </form>
+        </div>
     </div>
     <div class="inputs">
     </div>
