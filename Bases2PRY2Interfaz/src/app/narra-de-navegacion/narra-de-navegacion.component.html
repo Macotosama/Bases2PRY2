@@ -3,11 +3,12 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'side' : 'over'"
       [opened]="(isHandset$ | async) === true">
-    <mat-toolbar class="matToolbarSidnev">Menu</mat-toolbar>
+    <mat-toolbar class="matToolbarSidnev">Menú</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item href="#">Facurado en la sucursal</a>
+      <a mat-list-item href="#">Agregar nueva categoría</a>
+      <a mat-list-item href="#">Agreagar nuevo producto</a>
+      <a mat-list-item href="#">Ver inventario</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

@@ -20,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatCardModule } from '@angular/material/card';
 import { HomebusinessComponent } from './homebusiness/homebusiness.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { NewcategoryComponent } from './newcategory/newcategory.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MatChipsModule } from '@angular/material/chips';
     NarraDeNavegacionComponent,
     MainHomeComponent,
     HomebusinessComponent,
+    NewcategoryComponent,
   ],
   imports: [
     BrowserModule,
