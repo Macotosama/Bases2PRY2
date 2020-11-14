@@ -21,6 +21,8 @@ import { MatCardModule } from '@angular/material/card';
 import { HomebusinessComponent } from './homebusiness/homebusiness.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { NewcategoryComponent } from './newcategory/newcategory.component';
+import { MatTableModule } from '@angular/material/table';
+import { NewproductComponent } from './newproduct/newproduct.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { NewcategoryComponent } from './newcategory/newcategory.component';
     MainHomeComponent,
     HomebusinessComponent,
     NewcategoryComponent,
+    NewproductComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { NewcategoryComponent } from './newcategory/newcategory.component';
     FormsModule,
     ReactiveFormsModule,
     MatCardModule,
-    MatChipsModule
+    MatChipsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,48 +8,80 @@
 
     justify-items: center;
     // justify-content: stretch;
-    // align-content: stretch;
-    background-color: lawngreen;
-    
+    // align-content: stretch;    
     //gap: 1em;
 }
-.inputs {
-    //position: inherit;
+.inputs{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
     background-color: #BC88F8;
-    height: 55em;
-    width: 60em;
-    //display: flex;
+    height: 30em;
+    width: 40em;
     margin: 16px;
     padding: 16px;
     border-radius: 8px;
-    justify-content: center;
-    align-content: center;
-
-    // grid-column-start: 1; 
-    // grid-column-end: 1; 
-    //grid-row-start: 1; 
-    //grid-row-end: 3; 
+    justify-items: center;
+    align-items: center;
 }
-.inputNameCategory
-{
-  position: absolute;
-  left: 5%;
-  top: 30%;
+
+.inputs2 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  background-color: #BC88F8;
+  height: 55em;
+  width: 60em;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  justify-items: center;
+  align-items: center;
+}
+.inputNameCategory {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: center;
   background-color: white;
   border-radius: 30px;
   width: 300px;
   height: 65px;
-  justify-content: center;
   align-items: center;
 }
 
-.inputFromNameCategory
-{
-  position: absolute;
-  left: 25px;
+.inputFormFieldNameCategory {
+  justify-items: center;
+  width: 250px;
 }
 
-.inputFormFieldNameCategory
-{
+.buttonLogin {
+  color: white;
+  background-color: #6550C5;
+  width: 10em;
+  height: 3em;
+  border-radius: 30px;
+}
+
+span {
+  color: white;
+  font-size: 3em;
+}
+
+.textAreaDescriptionCategory {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: center;
+  background-color: white;
+  border-radius: 30px;
+  width: 300px;
+  height: 150px;
+  align-items: center;
+}
+
+.texAreaFormFieldDescriptionCategory {
+  justify-items: center;
   width: 250px;
+  height: 200px;
+}
+
+table {
+  width: max-content;
 }
