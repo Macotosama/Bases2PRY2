@@ -1,0 +1,111 @@
+.mainContainer {
+    position: absolute;
+    //top: 80%;
+    width: 100%;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+
+    justify-items: center;
+    // justify-content: stretch;
+    // align-content: stretch;    
+    //gap: 1em;
+}
+.inputs{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    background-color: #BC88F8;
+    height: 30em;
+    width: 40em;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+    justify-items: center;
+    align-items: center;
+}
+
+.inputs2 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  background-color: #BC88F8;
+  height: 55em;
+  width: 60em;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  justify-items: center;
+  align-items: center;
+}
+.inputNameCategory {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: center;
+  background-color: white;
+  border-radius: 30px;
+  width: 300px;
+  height: 65px;
+  align-items: center;
+}
+
+.inputFormFieldNameCategory {
+  justify-items: center;
+  width: 250px;
+}
+
+.buttonLogin {
+  color: white;
+  background-color: #6550C5;
+  width: 10em;
+  height: 3em;
+  border-radius: 30px;
+}
+
+span {
+  color: white;
+  font-size: 3em;
+}
+
+.textAreaDescriptionCategory {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-items: center;
+  background-color: white;
+  border-radius: 30px;
+  width: 300px;
+  height: 150px;
+  align-items: center;
+}
+
+.texAreaFormFieldDescriptionCategory {
+  justify-items: center;
+  width: 250px;
+  height: 200px;
+}
+
+table {
+  width: 100%;
+}
+
+.selectCategory {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+    background-color: white;
+    border-radius: 30px;
+    width: 300px;
+    height: 65px;
+    align-items: center;
+  }
+
+  .selecteFormCategory {
+    //position: absolute;
+    //opacity: 1;
+    background-color: transparent;
+    width: 250px;
+    height: 200px;
+    border-radius: 30px;
+  }
+
+  ::ng-deep .mat-form-field {
+    background-color: transparent !important;
+  }

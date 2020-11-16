@@ -1,1 +1,68 @@
-<p>newproduct works!</p>
+<app-narra-de-navegacion></app-narra-de-navegacion>
+<div class="mainContainer">
+    <div class="inputs">
+        <span>Agregar un nuevo producto</span>
+        <div class="inputNameCategory">
+            <form class="inputFromNameCategory">
+                    <mat-form-field class="inputFormFieldNameCategory">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput [formControl]="nameFormControl" placeholder="Nueva categoría">
+                    <mat-error *ngIf="nameFormControl.invalid && !nameFormControl.hasError('required')">
+                    A <strong>excedido</strong> el tamaño máximo de 16
+                    </mat-error>
+                    <mat-error *ngIf="nameFormControl.hasError('required')">
+                    Porfavor ingrese un <strong>nombre</strong> para la nueva categoría
+                    </mat-error>
+                </mat-form-field>
+            </form>
+        </div>
+        <div class="selectCategory">
+            <form>
+                <mat-form-field appearance="fill" class="selecteFormCategory">
+                    <mat-label>Categoria</mat-label>
+                    <mat-select>
+                    <mat-option *ngFor="let food of foods" [value]="food">
+                        {{food}}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+        </div>
+        <div class="textAreaDescriptionCategory">
+            <form class="textAreaFromDescriptionCategory">
+                    <mat-form-field class="texAreaFormFieldDescriptionCategory">
+                    <mat-label>Nombre</mat-label>
+                    <textarea matInput [formControl]="descriptorFormControl" placeholder="Descripción" FloatLabelType="auto"></textarea>
+                    <mat-error *ngIf="nameFormControl.invalid && !nameFormControl.hasError('required')">
+                        A <strong>excedido</strong> el tamaño máximo de 30
+                    </mat-error>
+                    <mat-error *ngIf="descriptorFormControl.hasError('required')">
+                    Porfavor ingrese una <strong>descripción</strong> para la nueva categoría
+                    </mat-error>
+                </mat-form-field>
+            </form>
+        </div>
+        <button mat-flat-button class="buttonLogin">Agregar</button>
+    </div>
+    <div class="inputs2">
+        <table mat-table [dataSource]="categorys" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="category">
+              <th mat-header-cell *matHeaderCellDef> Categorías </th>
+              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="descriptor">
+                <th mat-header-cell *matHeaderCellDef> Descripción </th>
+                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+              </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="columns"></tr>
+            <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+          </table>
+    </div>
+</div>
