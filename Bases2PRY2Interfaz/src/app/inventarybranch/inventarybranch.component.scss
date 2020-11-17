@@ -1,0 +1,43 @@
+.maincoitainer {
+    position: absolute;
+    width: 100%;
+    //height: 100%;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+    gap: 1em;
+}
+
+.filtros {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+}
+
+.containertable {
+    width: 100em;
+    height: 50em;
+    background-color: #BC88F8;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    border-radius: 30px;
+    margin: 16px;
+    padding: 16px;
+}
+
+.unput {
+    width: 250px;
+}
+
+.buttonFiltro {
+    color: white;
+    background-color: #6550C5;
+    width: 10em;
+    height: 3em;
+    border-radius: 30px;
+}
+
+table {
+    width: 100%;
+}

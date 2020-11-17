@@ -6,6 +6,7 @@ import { NarraDeNavegacionComponent } from './narra-de-navegacion/narra-de-naveg
 import { NewcategoryComponent } from './newcategory/newcategory.component';
 import { NewproductComponent } from './newproduct/newproduct.component';
 import { SalesbranchComponent } from './salesbranch/salesbranch.component';
+import { InventarybranchComponent } from './inventarybranch/inventarybranch.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'newcategory', component: NewcategoryComponent},
   {path: 'newproduct', component: NewproductComponent},
   {path: 'salesbranch', component: SalesbranchComponent},
+  {path: 'inventary', component: InventarybranchComponent},
 ];
 
 @NgModule({

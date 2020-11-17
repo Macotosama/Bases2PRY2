@@ -28,6 +28,7 @@ import { SalesbranchComponent } from './salesbranch/salesbranch.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { InventarybranchComponent } from './inventarybranch/inventarybranch.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     NewcategoryComponent,
     NewproductComponent,
     SalesbranchComponent,
+    InventarybranchComponent,
   ],
   imports: [
     BrowserModule,
