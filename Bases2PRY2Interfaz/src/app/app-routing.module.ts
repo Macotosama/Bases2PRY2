@@ -5,6 +5,7 @@ import { HomebusinessComponent } from './homebusiness/homebusiness.component';
 import { NarraDeNavegacionComponent } from './narra-de-navegacion/narra-de-navegacion.component';
 import { NewcategoryComponent } from './newcategory/newcategory.component';
 import { NewproductComponent } from './newproduct/newproduct.component';
+import { SalesbranchComponent } from './salesbranch/salesbranch.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -13,6 +14,7 @@ const routes: Routes = [
   //{ path: 'homebusiness', component: NarraDeNavegacionComponent },
   {path: 'newcategory', component: NewcategoryComponent},
   {path: 'newproduct', component: NewproductComponent},
+  {path: 'salesbranch', component: SalesbranchComponent},
 ];
 
 @NgModule({

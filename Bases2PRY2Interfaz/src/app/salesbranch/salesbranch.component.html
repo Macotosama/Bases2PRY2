@@ -1,1 +1,59 @@
-<p>salesbranch works!</p>
+<app-narra-de-navegacion></app-narra-de-navegacion>
+<div class="maincoitainer">
+    <div class="filtros">
+        <form class="inputFromCorreoElectronico">
+            <mat-form-field class="unput" appearance="fill">
+                <mat-label>Cliente</mat-label>
+                <input type="email" matInput [formControl]="NumFacturaFormControl" placeholder="Ex. pat@example.com">
+                <mat-error *ngIf="NumFacturaFormControl.invalid && !NumFacturaFormControl.hasError('required')">
+                Porfavor ingrese su correo electrónico
+                </mat-error>
+                <mat-error *ngIf="NumFacturaFormControl.hasError('required')">
+                Porfavor ingrese su <strong>correo electrónico</strong>
+                </mat-error>
+            </mat-form-field>
+        </form>
+        <form class="inputFromCorreoElectronico">
+            <mat-form-field color="accent" appearance="fill" class="unput">
+                <mat-label>Inherited calendar color</mat-label>
+                <input matInput [matDatepicker]="picker1">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+        </form>
+        <form class="inputFromCorreoElectronico">
+            <mat-form-field class="unput" appearance="fill">
+                <mat-label>N° de factura</mat-label>
+                <input type="email" matInput [formControl]="NumFacturaFormControl" placeholder="Ex. pat@example.com">
+                <mat-error *ngIf="NumFacturaFormControl.invalid && !NumFacturaFormControl.hasError('required')">
+                Porfavor ingrese su correo electrónico
+                </mat-error>
+                <mat-error *ngIf="NumFacturaFormControl.hasError('required')">
+                Porfavor ingrese su <strong>correo electrónico</strong>
+                </mat-error>
+            </mat-form-field>
+        </form>
+        <button mat-flat-button class="buttonFiltro">Filtrar</button>
+    </div>
+    <div class="containertable">
+        <table mat-table [dataSource]="categorys" class="mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <!-- Position Column -->
+            <ng-container matColumnDef="category">
+              <th mat-header-cell *matHeaderCellDef> Categorías </th>
+              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="descriptor">
+                <th mat-header-cell *matHeaderCellDef> Descripción </th>
+                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+              </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="columns"></tr>
+            <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+          </table>
+    </div>
+</div>

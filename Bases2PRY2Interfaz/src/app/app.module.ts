@@ -25,6 +25,9 @@ import { MatTableModule } from '@angular/material/table';
 import { NewproductComponent } from './newproduct/newproduct.component';
 import { MatSelectModule } from '@angular/material/select';
 import { SalesbranchComponent } from './salesbranch/salesbranch.component';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -54,7 +57,10 @@ import { SalesbranchComponent } from './salesbranch/salesbranch.component';
     MatCardModule,
     MatChipsModule,
     MatTableModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSliderModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
