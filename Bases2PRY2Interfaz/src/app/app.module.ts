@@ -29,6 +29,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { InventarybranchComponent } from './inventarybranch/inventarybranch.component';
+import { ClienthomeComponent } from './clienthome/clienthome.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { InventarybranchComponent } from './inventarybranch/inventarybranch.comp
     NewproductComponent,
     SalesbranchComponent,
     InventarybranchComponent,
+    ClienthomeComponent,
   ],
   imports: [
     BrowserModule,

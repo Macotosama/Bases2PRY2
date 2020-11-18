@@ -1,6 +1,7 @@
 .maincoitainer {
     position: absolute;
     width: 100%;
+    top: 13%;
     //height: 100%;
     align-items: center;
     display: grid;
@@ -41,3 +42,9 @@
 table {
     width: 100%;
 }
+
+
+span {
+    //color: white;
+    font-size: 3em;
+  }
