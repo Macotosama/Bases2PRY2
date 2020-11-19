@@ -30,6 +30,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { InventarybranchComponent } from './inventarybranch/inventarybranch.component';
 import { ClienthomeComponent } from './clienthome/clienthome.component';
+import { BarraClienteComponent } from './barra-cliente/barra-cliente.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ClienthomeComponent } from './clienthome/clienthome.component';
     SalesbranchComponent,
     InventarybranchComponent,
     ClienthomeComponent,
+    BarraClienteComponent,
   ],
   imports: [
     BrowserModule,

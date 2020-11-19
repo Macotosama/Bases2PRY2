@@ -21,6 +21,11 @@ export class MainHomeComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.XD()
+  }
+
+  XD(): void {
+    localStorage.setItem('123', 'bbbbc');
   }
 
 }
