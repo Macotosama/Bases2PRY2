@@ -31,6 +31,9 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { InventarybranchComponent } from './inventarybranch/inventarybranch.component';
 import { ClienthomeComponent } from './clienthome/clienthome.component';
 import { BarraClienteComponent } from './barra-cliente/barra-cliente.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -66,7 +69,10 @@ import { BarraClienteComponent } from './barra-cliente/barra-cliente.component';
     MatSelectModule,
     MatSliderModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    ScrollingModule,
+    MatPaginatorModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
