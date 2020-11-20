@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-clienthome',
@@ -9,6 +10,11 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 export class ClienthomeComponent implements OnInit {
   p: number = 1;
   items = Array.from({length: 100000}).map((_, i) => `Item #${i}`);
+  foods: string[] = [];
+  nameProduct =  new FormControl ('', [
+    Validators.required,
+    Validators.maxLength(16),
+  ]);
 
   constructor() { }
 
