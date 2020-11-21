@@ -42,13 +42,14 @@
   grid-template-columns: repeat(1, 1fr);
   align-items: center;
   justify-items: center;
+  gap: 2em;
 }
 
 .filterProduct {
-  background-color: #6550C5;
+  background-color: #BC88F8;
   border-radius: 50px;
   width: 70%;
-  height: 100%;
+  height: 6em;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   align-items: center;
@@ -89,4 +90,35 @@
   width: 250px;
   height: 200px;
   border-radius: 30px;
+}
+
+.buttonFiltro {
+  color: white;
+  background-color: #6550C5;
+  width: 10em;
+  height: 3em;
+  border-radius: 30px;
+}
+
+.maincontainer {
+  position: absolute;
+  top: 15%;
+}
+
+.radioButtonContainer {
+  width: 100%;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1em;
+  align-items: center;
+  justify-items: center;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 2em;
+}
+
+.tittleSucursal {
+  font-size: 2em;
 }

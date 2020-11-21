@@ -1,57 +1,68 @@
 <app-barra-cliente></app-barra-cliente>
-<div class="containerPositionFilter">
-    <div class="filterProduct">
-        <div class="imputNamePorduc">
-            <form>
-                <mat-form-field class="inputFromNameProduct">
-                    <mat-label>Cliente</mat-label>
-                    <input type="text" matInput [formControl]="nameProduct" placeholder="Nombre">
-                    <mat-error *ngIf="nameProduct.invalid && !nameProduct.hasError('required')">
-                    Porfavor ingrese su correo electrónico
-                    </mat-error>
-                    <mat-error *ngIf="nameProduct.hasError('required')">
-                    Porfavor ingrese su <strong>correo electrónico</strong>
-                    </mat-error>
-                </mat-form-field>
-            </form>
+<div class="maincontainer">
+    <div class="containerPositionFilter">
+        <div class="radioButtonContainer">
+            <span class="tittleSucursal">Sucursal</span>
+            <mat-radio-group aria-label="Select an option" [(ngModel)]="sede" class="radioButtonGroup">
+                <mat-radio-button value="limon" class="XD">Cartago</mat-radio-button>
+                <mat-radio-button value="cartago">Limón</mat-radio-button>
+            </mat-radio-group>
         </div>
-        <div class="selectCategory">
-            <form>
-                <mat-form-field class="selecteFormCategory">
-                    <mat-label>Categoria</mat-label>
-                    <mat-select>
-                    <mat-option *ngFor="let food of foods" [value]="food">
-                        {{food}}
-                    </mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </form>
+        <div class="filterProduct">
+            <div class="imputNamePorduc">
+                <form>
+                    <mat-form-field class="inputFromNameProduct">
+                        <mat-label>Cliente</mat-label>
+                        <input type="text" matInput [formControl]="nameProduct" placeholder="Nombre">
+                        <mat-error *ngIf="nameProduct.invalid && !nameProduct.hasError('required')">
+                        Porfavor ingrese su correo electrónico
+                        </mat-error>
+                        <mat-error *ngIf="nameProduct.hasError('required')">
+                        Porfavor ingrese su <strong>correo electrónico</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </form>
+            </div>
+            <div class="selectCategory">
+                <form>
+                    <mat-form-field class="selecteFormCategory">
+                        <mat-label>Categoria</mat-label>
+                        <mat-select>
+                        <mat-option *ngFor="let food of foods" [value]="food">
+                            {{food}}
+                        </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </form>
+            </div>
+            <button mat-flat-button class="buttonFiltro">Filtrar</button>
         </div>
     </div>
-</div>
-<div class="containerProduct">
-    <div *ngFor="let item of items | paginate: { itemsPerPage: 12, currentPage: p };" class=" cardContainer">
-        <mat-card class="example-card">
-            <mat-card-header>
-            <mat-card-title>{{item}}</mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-            </mat-card-header>
-            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-            <mat-card-content>
-            <p>
-                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-                bred for hunting.
-            </p>
-            </mat-card-content>
-            <mat-card-actions>
-            <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
-            </mat-card-actions>
-        </mat-card>
+    <div class="containerProduct">
+        <div *ngFor="let item of items | paginate: { itemsPerPage: 12, currentPage: p };" class=" cardContainer">
+            <mat-card class="example-card">
+                <mat-card-header>
+                <mat-card-title>{{item}}</mat-card-title>
+                <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                <mat-card-content>
+                <p>
+                    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                    A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                    bred for hunting.
+                </p>
+                </mat-card-content>
+                <mat-card-actions>
+                <button mat-button>LIKE</button>
+                <button mat-button>SHARE</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
     </div>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
+
 <!--
     <cdk-virtual-scroll-viewport itemSize="50" class="fulscrolling">
         <div *cdkVirtualFor="let p of items" class="productos">

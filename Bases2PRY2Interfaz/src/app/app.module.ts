@@ -34,6 +34,9 @@ import { BarraClienteComponent } from './barra-cliente/barra-cliente.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { ProductViewComponent } from './product-view/product-view.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     InventarybranchComponent,
     ClienthomeComponent,
     BarraClienteComponent,
+    ProductViewComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +76,9 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatNativeDateModule,
     ScrollingModule,
     MatPaginatorModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
