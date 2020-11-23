@@ -40,6 +40,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { RegisterbusinessComponent } from './registerbusiness/registerbusiness.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatCheckboxModule,
     MatRadioModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

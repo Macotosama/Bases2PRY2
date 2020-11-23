@@ -16,6 +16,7 @@ const httpOption = {
       private port = 'http://localhost:8000';
       private urlLoginEmpleado = '/getpValidacionDeVendedor/';
       private urlRegisterEmpleado = '/getpCrearPersonaVendedor/';
+      private urlAddCategory = '/getpCrearNevaCategoria/';
 
     constructor(
         private _http: HttpClient
@@ -26,6 +27,10 @@ const httpOption = {
     }
 
     registrarTrabajador(name: string, apellido1: string, apellido2: string, cedula: number, cel: number, correo: string, pass: string): Observable<any> {
-      return this._http.get(`${this.port}${this.urlRegisterEmpleado}${name}/${apellido1}/${apellido2}/${cedula}/${cel}/${correo}/${pass}`)
+      return this._http.get(`${this.port}${this.urlRegisterEmpleado}${cedula}/${name}/${apellido1}/${apellido2}/${cel}/${correo}/${pass}`)
+    }
+
+    addingNewCategory(nameCategory: string, descriptionCategory: string): Observable<any> {
+      return this._http.get(`${this.port}${this.urlAddCategory}${nameCategory}/${descriptionCategory}`)
     }
   }

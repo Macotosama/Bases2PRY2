@@ -29,6 +29,13 @@ export class MainHomeComponent implements OnInit {
     // this.XD()
   }
 
+  loginVendedor():void {
+    this.servicios.loginTrabajador(this.emailFormControl.value, this.numFormControl.value, this.sede).subscribe(Cliente => {
+      console.log(Cliente);
+    // this.contenidos = Cliente;
+  });
+  }
+
   // XD(): void {
   //   localStorage.setItem('123', 'bbbbc');
   // }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
+import { Service } from '../services/Service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-newcategory',
@@ -20,9 +22,16 @@ export class NewcategoryComponent implements OnInit {
 
   public columns = ['category', 'descriptor'];
   public categorys = [];
-  constructor() { }
+
+  constructor(private servicios: Service) { }
 
   ngOnInit(): void {
+  }
+
+  addCategory():void {
+    this.servicios.addingNewCategory(this.nameFormControl.value, this.descriptorFormControl.value).subscribe(res => {
+      console.log(res);
+    });
   }
 
 }
