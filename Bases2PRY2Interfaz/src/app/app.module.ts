@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NarraDeNavegacionComponent } from './narra-de-navegacion/narra-de-navegacion.component';
@@ -37,6 +38,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { ProductViewComponent } from './product-view/product-view.component';
+import { RegisterbusinessComponent } from './registerbusiness/registerbusiness.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,7 @@ import { ProductViewComponent } from './product-view/product-view.component';
     ClienthomeComponent,
     BarraClienteComponent,
     ProductViewComponent,
+    RegisterbusinessComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,7 +82,9 @@ import { ProductViewComponent } from './product-view/product-view.component';
     MatPaginatorModule,
     NgxPaginationModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    HttpClientModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

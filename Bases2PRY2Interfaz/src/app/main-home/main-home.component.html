@@ -76,9 +76,15 @@
                     </form>
                 </div>
                 <br>
+                <div class="radioButtonContainer">
+                    <mat-radio-group aria-label="Select an option" [(ngModel)]="sede" class="radioButtonGroup" color="primary">
+                        <mat-radio-button value="limon" class="XD">Cartago</mat-radio-button>
+                        <mat-radio-button value="cartago">Limón</mat-radio-button>
+                    </mat-radio-group>
+                </div>
                 <button mat-flat-button class="buttonLogin" [routerLink]="['/homebusiness']">Aceptar</button>
                 <br>
-                <a class="linkRegister">Registrarse</a>
+                <a class="linkRegister" (click)='dialogClientes()'>Registrarse</a>
             </div>
         </mat-tab>
         <mat-tab label="Corporativos">

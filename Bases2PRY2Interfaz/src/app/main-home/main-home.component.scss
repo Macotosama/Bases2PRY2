@@ -65,6 +65,12 @@ mat-tab
     margin: 16px;
     padding: 16px;
     border-radius: 8px;
+    padding: 1em;
+    // display: grid;
+    // grid-template-columns: repeat(1, 1fr);
+    // gap: 1em;
+    // align-items: center;
+    // justify-items: center;
   }
 
   .inputCorreoElectronico
@@ -120,7 +126,7 @@ mat-tab
     background-color: #6550C5;
     position: absolute;
     left: 37%;
-    top: 70%;
+    top: 75%;
     width: 10em;
     height: 3em;
     border-radius: 30px;
@@ -134,9 +140,17 @@ mat-tab
   .linkRegister
   {
     position: absolute;
-    top: 85%;
+    top: 90%;
     left: 42.5%;
     color: white;
+  }
+
+  .linkRegisterBusiness {
+    position: absolute;
+    top: 90%;
+    left: 42.5%;
+    color: white;
+    cursor: pointer;
   }
 
   .tittleOnePice
@@ -176,4 +190,20 @@ mat-tab
   .columnas
   {
     padding: 1em;
+  }
+
+  .radioButtonContainer {
+    height: 10%;
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1em;
+    align-items: center;
+    justify-items: center;
+    position: absolute;
+    top: 65%;
+  }
+  
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 2em;
   }
