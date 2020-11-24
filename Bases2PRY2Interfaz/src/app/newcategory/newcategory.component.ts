@@ -21,16 +21,39 @@ export class NewcategoryComponent implements OnInit {
   ]);
 
   public columns = ['category', 'descriptor'];
-  public categorys = [];
+  public categorys: any[];
 
-  constructor(private servicios: Service) { }
+  constructor(private servicios: Service, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    this.getCategorys();
+  }
+
+  vallidarEntrada():void {
+    if (this.nameFormControl.valid && this.descriptorFormControl.valid) {
+      this.addCategory();
+    } else {
+      this.openSnackBar('Ingrese todos los datos necesarios');
+    }
   }
 
   addCategory():void {
     this.servicios.addingNewCategory(this.nameFormControl.value, this.descriptorFormControl.value).subscribe(res => {
       console.log(res);
+    });
+  }
+
+  getCategorys():void {
+    this.servicios.getCategory().subscribe(res => {
+      this.categorys = res;
+    });
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'OK', {
+      duration: 20000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
     });
   }
 

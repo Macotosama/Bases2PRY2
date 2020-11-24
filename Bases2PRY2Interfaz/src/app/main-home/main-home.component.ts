@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, throwMatDialogContentAlreadyAttachedError } from '@angular/material/dialog';
 import { Service } from '../services/Service';
 import { RegisterbusinessComponent } from '../registerbusiness/registerbusiness.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-main-home',
@@ -23,16 +24,24 @@ export class MainHomeComponent implements OnInit {
     Validators.maxLength(16),
   ]);
 
-  constructor(private servicios: Service, public dialog: MatDialog) { }
+  constructor(private servicios: Service, public dialog: MatDialog, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     // this.XD()
   }
 
+  validarVendedor():void {
+    if (this.emailFormControl.valid && this.numFormControl.valid) {
+      this.loginVendedor();
+    } else {
+      this.openSnackBar('Ingrese sus credenciales');
+    }
+  }
+
   loginVendedor():void {
+    console.log(this.emailFormControl.value, this.numFormControl.value)
     this.servicios.loginTrabajador(this.emailFormControl.value, this.numFormControl.value, this.sede).subscribe(Cliente => {
       console.log(Cliente);
-    // this.contenidos = Cliente;
   });
   }
 
@@ -44,6 +53,14 @@ export class MainHomeComponent implements OnInit {
       width: '800px', height: '550px',
       // data: cliente
     })
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'OK', {
+      duration: 20000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+    });
   }
 
 }
