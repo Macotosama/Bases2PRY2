@@ -6,8 +6,8 @@
     <div class="filtros">
         <form class="inputFromCorreoElectronico">
             <mat-form-field class="unput" appearance="fill">
-                <mat-label>Cliente</mat-label>
-                <input type="email" matInput [formControl]="NumFacturaFormControl" placeholder="Ex. pat@example.com">
+                <mat-label>Producto</mat-label>
+                <input type="email" matInput [formControl]="NumFacturaFormControl" placeholder="Ex. productName">
                 <mat-error *ngIf="NumFacturaFormControl.invalid && !NumFacturaFormControl.hasError('required')">
                 Porfavor ingrese su correo electrónico
                 </mat-error>
