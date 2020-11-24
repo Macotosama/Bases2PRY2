@@ -17,7 +17,7 @@ export class NewcategoryComponent implements OnInit {
 
   descriptorFormControl = new FormControl('', [
     Validators.required,
-    Validators.maxLength(30),
+    Validators.maxLength(300),
   ]);
 
   public columns = ['category', 'descriptor'];
@@ -39,7 +39,7 @@ export class NewcategoryComponent implements OnInit {
 
   addCategory():void {
     this.servicios.addingNewCategory(this.nameFormControl.value, this.descriptorFormControl.value).subscribe(res => {
-      console.log(res);
+      this.categorys = res;
     });
   }
 

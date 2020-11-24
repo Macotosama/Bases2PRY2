@@ -17,7 +17,10 @@ const httpOption = {
       private urlLoginEmpleado = '/getpValidacionDeVendedor/';
       private urlRegisterEmpleado = '/getpCrearPersonaVendedor/';
       private urlAddCategory = '/getpCrearNevaCategoria/';
-      private urlGetCategory = '/getpRetornaCategorias'
+      private urlGetCategory = '/getpRetornaCategorias';
+      private urlGetNameCategory = '/getpEnviarCategorias';
+      private urlAddProduct = '/getpCrearNevoProducto/';
+      private urlGetProduct = '/getpRetornaProductos';
 
     constructor(
         private _http: HttpClient
@@ -37,5 +40,17 @@ const httpOption = {
 
     getCategory(): Observable<any> {
       return this._http.get(`${this.port}${this.urlGetCategory}`)
+    }
+
+    getNameCategory(): Observable<any> {
+      return this._http.get(`${this.port}${this.urlGetNameCategory}`)
+    }
+
+    addingNewProduct(nombre: string, categoria: string, descripcion: string): Observable<any> {
+      return this._http.get(`${this.port}${this.urlAddProduct}${nombre}/${descripcion}/${categoria}`)
+    }
+
+    gerProductos(): Observable<any> {
+      return this._http.get(`${this.port}${this.urlGetProduct}`)
     }
   }

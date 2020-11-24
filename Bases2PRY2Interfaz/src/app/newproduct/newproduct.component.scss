@@ -28,13 +28,13 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   background-color: #BC88F8;
-  height: 55em;
-  width: 60em;
+  height: 40em;
+  width: 50em;
   margin: 16px;
   padding: 16px;
   border-radius: 8px;
   justify-items: center;
-  align-items: center;
+  align-items: top;
 }
 
 .inputNameCategory {

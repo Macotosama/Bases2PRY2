@@ -9,6 +9,7 @@
       <a mat-list-item [routerLink]="['/newcategory']">Agregar nueva categoría</a>
       <a mat-list-item [routerLink]="['/newproduct']">Agreagar nuevo producto</a>
       <a mat-list-item [routerLink]="['/inventary']">Ver inventario</a>
+      <a mat-list-item [routerLink]="['/home']">Cerrar sesión</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -22,7 +23,7 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <button mat-icon-button aria-label="Menu" (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
-      <div class="TituloToback" [routerLink]="['/home']">
+      <div class="TituloToback" [routerLink]="['/homebusiness']">
         <span>OnePice</span>
         <img src="./assets/XD.png" alt="Logo de la empresa" class="logo"> 
       </div>

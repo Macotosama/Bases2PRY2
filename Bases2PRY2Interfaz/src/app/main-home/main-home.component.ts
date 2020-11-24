@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, throwMatDialogContentAlreadyAttachedError } from '@angular/material/dialog';
 import { Service } from '../services/Service';
 import { RegisterbusinessComponent } from '../registerbusiness/registerbusiness.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+// import { Vendedor } from '../models/model_vendedor';
 
 @Component({
   selector: 'app-main-home',
@@ -24,10 +26,10 @@ export class MainHomeComponent implements OnInit {
     Validators.maxLength(16),
   ]);
 
-  constructor(private servicios: Service, public dialog: MatDialog, private _snackBar: MatSnackBar) { }
+  constructor(private servicios: Service, public dialog: MatDialog, private _snackBar: MatSnackBar, private _router: Router) { }
 
   ngOnInit(): void {
-    // this.XD()
+    localStorage.clear();
   }
 
   validarVendedor():void {
@@ -39,19 +41,15 @@ export class MainHomeComponent implements OnInit {
   }
 
   loginVendedor():void {
-    console.log(this.emailFormControl.value, this.numFormControl.value)
-    this.servicios.loginTrabajador(this.emailFormControl.value, this.numFormControl.value, this.sede).subscribe(Cliente => {
-      console.log(Cliente);
-  });
+    this.servicios.loginTrabajador(this.emailFormControl.value, this.numFormControl.value, this.sede).subscribe(Vendedor => {
+      localStorage.setItem('vendedor',Vendedor);
+    });
+    this._router.navigate(['/homebusiness']);
   }
 
-  // XD(): void {
-  //   localStorage.setItem('123', 'bbbbc');
-  // }
   dialogClientes() {
     const dialogRef = this.dialog.open(RegisterbusinessComponent, {
       width: '800px', height: '550px',
-      // data: cliente
     })
   }
 
