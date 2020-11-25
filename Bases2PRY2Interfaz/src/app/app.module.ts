@@ -41,6 +41,7 @@ import { ProductViewComponent } from './product-view/product-view.component';
 import { RegisterbusinessComponent } from './registerbusiness/registerbusiness.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DialoginventaryComponent } from './dialoginventary/dialoginventary.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     BarraClienteComponent,
     ProductViewComponent,
     RegisterbusinessComponent,
+    DialoginventaryComponent,
   ],
   imports: [
     BrowserModule,

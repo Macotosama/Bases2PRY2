@@ -12,8 +12,10 @@
 
 .filtros {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1em;
+    grid-template-columns: repeat(3, 1fr);
+    //gap: 1em;
+    justify-items: center;
+    align-items: center;
 }
 
 .containertable {
@@ -47,4 +49,21 @@ table {
 span {
     //color: white;
     font-size: 3em;
+}
+
+.inventaryAdding {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.selecteFormCategory {
+    width: 250px;
+}\\button:hover {
+  box-shadow: 2px 2px 10px #666;
+}
+
+button:hover {
+    box-shadow: 2px 2px 10px #666;
   }

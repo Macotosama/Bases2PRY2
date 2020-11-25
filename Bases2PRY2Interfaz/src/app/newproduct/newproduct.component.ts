@@ -65,6 +65,12 @@ export class NewproductComponent implements OnInit {
       productos => {
         this.productos=productos;
       });
+      this.nameFormControl.setValue('');
+      this.nameFormControl.reset();
+      this.categoriasControl.setValue('');
+      this.categoriasControl.reset();
+      this.descriptorFormControl.setValue('');
+      this.descriptorFormControl.reset();
   }
 
   openSnackBar(message: string) {

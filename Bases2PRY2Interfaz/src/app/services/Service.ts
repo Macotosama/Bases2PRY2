@@ -21,36 +21,56 @@ const httpOption = {
       private urlGetNameCategory = '/getpEnviarCategorias';
       private urlAddProduct = '/getpCrearNevoProducto/';
       private urlGetProduct = '/getpRetornaProductos';
+      private urlGetInventary = '/getpRetornoInventario';
+      private urlGetOnlyNameProduct = '/getpRetornaProductoNombreIdentificador';
+      private urlAddinInventary = '/getpAgragarAlInventario/';
+      private urlGetFiltrarInventario = '/getpBuscarProductoCategoriaEnInvenatrio/';
 
     constructor(
         private _http: HttpClient
       ){}
 
     loginTrabajador(correoElectronico: string, contrasena: string, sede: string): Observable<any> {
-        return this._http.get(`${this.port}${this.urlLoginEmpleado}${correoElectronico}/${contrasena}`)
+        return this._http.get(`${this.port}${this.urlLoginEmpleado}${correoElectronico}/${contrasena}`);
     }
 
     registrarTrabajador(name: string, apellido1: string, apellido2: string, cedula: number, cel: number, correo: string, pass: string): Observable<any> {
-      return this._http.get(`${this.port}${this.urlRegisterEmpleado}${cedula}/${name}/${apellido1}/${apellido2}/${cel}/${correo}/${pass}`)
+      return this._http.get(`${this.port}${this.urlRegisterEmpleado}${cedula}/${name}/${apellido1}/${apellido2}/${cel}/${correo}/${pass}`);
     }
 
     addingNewCategory(nameCategory: string, descriptionCategory: string): Observable<any> {
-      return this._http.get(`${this.port}${this.urlAddCategory}${nameCategory}/${descriptionCategory}`)
+      return this._http.get(`${this.port}${this.urlAddCategory}${nameCategory}/${descriptionCategory}`);
     }
 
     getCategory(): Observable<any> {
-      return this._http.get(`${this.port}${this.urlGetCategory}`)
+      return this._http.get(`${this.port}${this.urlGetCategory}`);
     }
 
     getNameCategory(): Observable<any> {
-      return this._http.get(`${this.port}${this.urlGetNameCategory}`)
+      return this._http.get(`${this.port}${this.urlGetNameCategory}`);
     }
 
     addingNewProduct(nombre: string, categoria: string, descripcion: string): Observable<any> {
-      return this._http.get(`${this.port}${this.urlAddProduct}${nombre}/${descripcion}/${categoria}`)
+      return this._http.get(`${this.port}${this.urlAddProduct}${nombre}/${descripcion}/${categoria}`);
     }
 
     gerProductos(): Observable<any> {
-      return this._http.get(`${this.port}${this.urlGetProduct}`)
+      return this._http.get(`${this.port}${this.urlGetProduct}`);
+    }
+
+    getProductoName(): Observable<any> {
+      return this._http.get(`${this.port}${this.urlGetOnlyNameProduct}`);
+    }
+
+    addingInventary(name: number, stock: number): Observable<any> {
+      return this._http.get(`${this.port}${this.urlAddinInventary}${name}/${stock}`);
+    }
+
+    getInventary(): Observable<any> {
+      return this._http.get(`${this.port}${this.urlGetInventary}`);
+    }
+
+    getFiltroInventary(producto: string, idCategoria: number): Observable<any> {
+      return this._http.get(`${this.port}${this.urlGetFiltrarInventario}${producto}/${idCategoria}`);
     }
   }
