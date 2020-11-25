@@ -25,6 +25,7 @@ const httpOption = {
       private urlGetOnlyNameProduct = '/getpRetornaProductoNombreIdentificador';
       private urlAddinInventary = '/getpAgragarAlInventario/';
       private urlGetFiltrarInventario = '/getpBuscarProductoCategoriaEnInvenatrio/';
+      private urlUpdateInventary = '/getpUpadateInventario/';
 
     constructor(
         private _http: HttpClient
@@ -72,5 +73,10 @@ const httpOption = {
 
     getFiltroInventary(producto: string, idCategoria: number): Observable<any> {
       return this._http.get(`${this.port}${this.urlGetFiltrarInventario}${producto}/${idCategoria}`);
+    }
+
+    getUpateInventary(idInventary: number, idProduct: number, cantidad: number): Observable<any> {
+      console.log(idInventary, idProduct, cantidad)
+      return this._http.get(`${this.port}${this.urlUpdateInventary}${idInventary}/${idProduct}/${cantidad}`);
     }
   }

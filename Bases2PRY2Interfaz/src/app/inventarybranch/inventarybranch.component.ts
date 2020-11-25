@@ -4,6 +4,7 @@ import { Service } from '../services/Service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialoginventaryComponent } from '../dialoginventary/dialoginventary.component';
+import { observable } from 'rxjs';
 
 @Component({
   selector: 'app-inventarybranch',
@@ -49,7 +50,6 @@ export class InventarybranchComponent implements OnInit {
   }
 
   filterInventary():void {
-    console.log(this.CategoryForm.value)
     var produc;
     var category;
     if (this.nameProductForm.value == '') {
@@ -123,6 +123,9 @@ export class InventarybranchComponent implements OnInit {
   dialogClientes(item: any) {
     const dialogRef = this.dialog.open(DialoginventaryComponent, {
       width: '300px', height: '200px', data: item
+    })
+    dialogRef.afterClosed().subscribe(res => {
+      this.getInventario();
     })
   }
 
