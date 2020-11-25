@@ -17,11 +17,11 @@
         <form class="inputFromCorreoElectronico">
             <mat-form-field class="unput" appearance="fill">
                 <mat-label>Cantidad</mat-label>
-                <input type="number" matInput [formControl]="stockControl" placeholder="Ex. productName">
-                <mat-error *ngIf="NumFacturaFormControl.invalid && !NumFacturaFormControl.hasError('required')">
+                <input type="number" matInput [formControl]="stockControl" placeholder="Ex. Stock">
+                <mat-error *ngIf="stockControl.invalid && !stockControl.hasError('required')">
                 Porfavor solo ingrese montos permitidos
                 </mat-error>
-                <mat-error *ngIf="NumFacturaFormControl.hasError('required')">
+                <mat-error *ngIf="stockControl.hasError('required')">
                 Porfavor ingrese el tamaño del <strong>inventario</strong>
                 </mat-error>
             </mat-form-field>
@@ -33,12 +33,6 @@
             <mat-form-field class="unput" appearance="fill">
                 <mat-label>Producto</mat-label>
                 <input type="email" matInput [formControl]="nameProductForm" placeholder="Ex. productName">
-                <mat-error *ngIf="NumFacturaFormControl.invalid && !NumFacturaFormControl.hasError('required')">
-                Porfavor ingrese su correo electrónico
-                </mat-error>
-                <mat-error *ngIf="NumFacturaFormControl.hasError('required')">
-                Porfavor ingrese su <strong>correo electrónico</strong>
-                </mat-error>
             </mat-form-field>
         </form>
         <form>
@@ -85,7 +79,7 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef> Acción </th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-flat-button class="buttonFiltro">Modificar</button>
+                    <button mat-flat-button class="buttonFiltro" (click)="dialogClientes()">Modificar</button>
                 </td>
             </ng-container>
           

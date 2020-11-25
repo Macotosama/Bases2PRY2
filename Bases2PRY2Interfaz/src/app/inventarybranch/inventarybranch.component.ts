@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Service } from '../services/Service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialoginventaryComponent } from '../dialoginventary/dialoginventary.component';
 
 @Component({
   selector: 'app-inventarybranch',
@@ -22,26 +24,23 @@ export class InventarybranchComponent implements OnInit {
 
   productControl = new FormControl ('', [
     Validators.required
-  ])
+  ]);
 
   stockControl = new FormControl ('', [
     Validators.required,
     Validators.pattern('^[1-9][0-9]*$')
   ])
 
-  nameProductForm = new FormControl ('', [
-    Validators.required
-  ])
+  nameProductForm = new FormControl ('', [])
 
-  CategoryForm = new FormControl ('', [
-    Validators.required,
-  ])
+  CategoryForm = new FormControl ('', [])
 
   public columns = ['producto', 'category', 'descriptor', 'invetario', 'actions'];
   public categorys: any[];
   public products: any[];
   public inventario: any[];
-  constructor(private servicio: Service, private _snackBar: MatSnackBar) { }
+
+  constructor(private servicio: Service, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getInventario();
@@ -119,6 +118,12 @@ export class InventarybranchComponent implements OnInit {
       horizontalPosition: 'center',
       verticalPosition: 'top',
     });
+  }
+
+  dialogClientes(item: any) {
+    const dialogRef = this.dialog.open(DialoginventaryComponent, {
+      width: '300px', height: '200px', data: item
+    })
   }
 
 }

@@ -1,1 +1,15 @@
-<p>dialoginventary works!</p>
+<div class="mainContainer">
+    <form class="inputFromCorreoElectronico">
+        <mat-form-field class="unput" appearance="fill">
+            <mat-label>Cantidad</mat-label>
+            <input type="number" matInput [formControl]="stockControl" placeholder="Ex. Stock">
+            <mat-error *ngIf="stockControl.invalid && !stockControl.hasError('required')">
+            Porfavor solo ingrese montos permitidos
+            </mat-error>
+            <mat-error *ngIf="stockControl.hasError('required')">
+            Porfavor ingrese el tamaño del <strong>inventario</strong>
+            </mat-error>
+        </mat-form-field>
+    </form>
+    <button mat-flat-button class="buttonFiltro" >Aceptar</button>
+</div>
