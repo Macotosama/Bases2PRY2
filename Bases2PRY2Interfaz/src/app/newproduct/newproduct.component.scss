@@ -15,7 +15,7 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     background-color: #BC88F8;
-    height: 30em;
+    height: 35em;
     width: 40em;
     margin: 16px;
     padding: 16px;
@@ -113,4 +113,20 @@ table {
 
   button:hover {
     box-shadow: 2px 2px 10px #666;
+  }
+
+  .inputImage {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+    background-color: white;
+    border-radius: 30px;
+    width: 300px;
+    height: 65px;
+    align-items: center;
+  }
+  
+  .inputFormFieldCategory {
+    justify-items: center;
+    width: 250px;
   }

@@ -42,6 +42,20 @@
                 </mat-form-field>
             </form>
         </div>
+        <div class="inputImage">
+            <form class="inputFromImage">
+                    <mat-form-field class="inputFormFieldImage">
+                    <mat-label>Imagen</mat-label>
+                    <input matInput [formControl]="nameFormControl" placeholder="Ruta">
+                    <mat-error *ngIf="nameFormControl.invalid && !nameFormControl.hasError('required')">
+                    A <strong>excedido</strong> el tamaño máximo de 16
+                    </mat-error>
+                    <mat-error *ngIf="nameFormControl.hasError('required')">
+                    Porfavor ingrese un <strong>nombre</strong> para la nueva categoría
+                    </mat-error>
+                </mat-form-field>
+            </form>
+        </div>
         <button mat-flat-button class="buttonLogin" (click)="valiEntradaProducto()">Agregar</button>
     </div>
     <div class="inputs2">

@@ -29,6 +29,10 @@ export class NewproductComponent implements OnInit {
       Validators.required
     ]);
 
+  imageControl = new FormControl ('', [
+    Validators.required,
+  ])
+
   public columns = ['name', 'category', 'descriptor'];
   public categorys: any[];
   public productos: any[];
