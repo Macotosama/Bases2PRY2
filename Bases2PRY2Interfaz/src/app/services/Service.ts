@@ -51,8 +51,9 @@ const httpOption = {
       return this._http.get(`${this.port}${this.urlGetNameCategory}`);
     }
 
-    addingNewProduct(nombre: string, categoria: string, descripcion: string): Observable<any> {
-      return this._http.get(`${this.port}${this.urlAddProduct}${nombre}/${descripcion}/${categoria}`);
+    addingNewProduct(nombre: string, categoria: string, descripcion: string, image: string, precio: number): Observable<any> {
+      console.log(`${this.port}${this.urlAddProduct}${nombre}/${descripcion}/${categoria}/${image}/${precio}`)
+      return this._http.get(`${this.port}${this.urlAddProduct}${nombre}/${descripcion}/${categoria}/${image}/${precio}`);
     }
 
     gerProductos(): Observable<any> {

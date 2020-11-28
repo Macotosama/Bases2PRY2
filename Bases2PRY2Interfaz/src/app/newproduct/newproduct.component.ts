@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Service } from '../services/Service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 interface Food {
   value: string;
@@ -31,6 +32,11 @@ export class NewproductComponent implements OnInit {
 
   imageControl = new FormControl ('', [
     Validators.required,
+  ]);
+
+  precioControls = new FormControl ('', [
+    Validators.required,
+    Validators.pattern('^[1-9][0-9]*$')
   ])
 
   public columns = ['name', 'category', 'descriptor'];
@@ -57,7 +63,8 @@ export class NewproductComponent implements OnInit {
   }
 
   valiEntradaProducto():void {
-    if (this.nameFormControl.valid && this.descriptorFormControl.valid && this.categoriasControl.valid) {
+    if (this.nameFormControl.valid && this.descriptorFormControl.valid && this.categoriasControl.valid && this.imageControl.valid 
+      && this.precioControls.valid) {
       this.addNewProduct();
     } else {
       this.openSnackBar('Ingrese todos los datos');
@@ -65,16 +72,22 @@ export class NewproductComponent implements OnInit {
   }
 
   addNewProduct():void {
-    this.servicios.addingNewProduct(this.nameFormControl.value, this.categoriasControl.value, this.descriptorFormControl.value).subscribe(
+    this.servicios.addingNewProduct(this.nameFormControl.value, this.categoriasControl.value, this.descriptorFormControl.value,
+      this.imageControl.value, this.precioControls.value).subscribe(
       productos => {
         this.productos=productos;
       });
+      this.openSnackBar('Se agrego correctamente');
       this.nameFormControl.setValue('');
       this.nameFormControl.reset();
       this.categoriasControl.setValue('');
       this.categoriasControl.reset();
       this.descriptorFormControl.setValue('');
       this.descriptorFormControl.reset();
+      this.imageControl.setValue('');
+      this.imageControl.reset();
+      this.precioControls.setValue('');
+      this.precioControls.reset();
   }
 
   openSnackBar(message: string) {

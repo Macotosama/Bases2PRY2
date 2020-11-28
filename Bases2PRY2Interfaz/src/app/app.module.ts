@@ -42,6 +42,7 @@ import { RegisterbusinessComponent } from './registerbusiness/registerbusiness.c
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DialoginventaryComponent } from './dialoginventary/dialoginventary.component';
+import { RegisterclienteComponent } from './registercliente/registercliente.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { DialoginventaryComponent } from './dialoginventary/dialoginventary.comp
     ProductViewComponent,
     RegisterbusinessComponent,
     DialoginventaryComponent,
+    RegisterclienteComponent,
   ],
   imports: [
     BrowserModule,

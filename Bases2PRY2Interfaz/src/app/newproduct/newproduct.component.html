@@ -44,14 +44,25 @@
         </div>
         <div class="inputImage">
             <form class="inputFromImage">
-                    <mat-form-field class="inputFormFieldImage">
+                    <mat-form-field class="inputFormFieldNameCategory">
                     <mat-label>Imagen</mat-label>
-                    <input matInput [formControl]="nameFormControl" placeholder="Ruta">
-                    <mat-error *ngIf="nameFormControl.invalid && !nameFormControl.hasError('required')">
-                    A <strong>excedido</strong> el tamaño máximo de 16
+                    <input matInput [formControl]="imageControl" placeholder="Ruta">
+                    <mat-error *ngIf="imageControl.hasError('required')">
+                    Porfavor ingrese la <strong>URL</strong> para la imagen
                     </mat-error>
-                    <mat-error *ngIf="nameFormControl.hasError('required')">
-                    Porfavor ingrese un <strong>nombre</strong> para la nueva categoría
+                </mat-form-field>
+            </form>
+        </div>
+        <div class="inputPrice">
+            <form class="inputFromPrice">
+                <mat-form-field class="price">
+                    <mat-label>Precio</mat-label>
+                    <input type="number" matInput [formControl]="precioControls" placeholder="₡">
+                    <mat-error *ngIf="precioControls.invalid && !precioControls.hasError('required')">
+                    Porfavor solo ingrese precios permitidos
+                    </mat-error>
+                    <mat-error *ngIf="precioControls.hasError('required')">
+                    Porfavor ingrese el <strong>precio</strong> del producto
                     </mat-error>
                 </mat-form-field>
             </form>
