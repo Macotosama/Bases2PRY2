@@ -80,8 +80,6 @@ export class RegisterbusinessComponent implements OnInit {
   }
 
   enviarInfo():void {
-    console.log(this.nombre.value, this.apellido1.value,this.apellido2.value,this.cedula.value,
-      this.telefono.value, this.correo.value, this.contrasena.value)
     this.servicios.registrarTrabajador(this.nombre.value, this.apellido1.value,this.apellido2.value,this.cedula.value,
       this.telefono.value, this.correo.value, this.contrasena.value).subscribe(Cliente => {
         console.log(Cliente);

@@ -8,6 +8,7 @@ import { SalesbranchComponent } from './salesbranch/salesbranch.component';
 import { InventarybranchComponent } from './inventarybranch/inventarybranch.component';
 import { ClienthomeComponent } from './clienthome/clienthome.component';
 import { RegisterbusinessComponent } from './registerbusiness/registerbusiness.component';
+import { RegisterclienteComponent } from './registercliente/registercliente.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'inventary', component: InventarybranchComponent},
   {path: 'clienthome', component: ClienthomeComponent},
   {path: 'registerbusiness', component: RegisterbusinessComponent},
+  {path: 'registercliente', component: RegisterbusinessComponent},
 ];
 
 @NgModule({

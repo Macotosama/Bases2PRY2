@@ -40,7 +40,7 @@
             <br>
             <button mat-flat-button class="buttonLogin" [routerLink]="['/clienthome']">Aceptar</button>
             <br>
-            <a class="linkRegister">Registrarse</a>
+            <a class="linkRegister" (click)="dialogRegisterClientes()">Registrarse</a>
         </div>
         </mat-tab>
         <mat-tab label="Vendedores">
@@ -85,7 +85,7 @@
                 <button mat-flat-button class="buttonLogin" (click)="validarVendedor()">Aceptar</button>
                 <!--<button mat-flat-button class="buttonLogin"  [routerLink]="['/homebusiness']">Aceptar</button>-->
                 <br>
-                <a class="linkRegister" (click)='dialogClientes()'>Registrarse</a>
+                <a class="linkRegister" (click)='dialogRegisterBusiness()'>Registrarse</a>
             </div>
         </mat-tab>
         <mat-tab label="Corporativos">

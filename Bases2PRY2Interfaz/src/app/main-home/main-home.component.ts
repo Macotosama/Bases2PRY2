@@ -5,6 +5,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, throwMatDialogContentAlreadyA
 import { Service } from '../services/Service';
 import { RegisterbusinessComponent } from '../registerbusiness/registerbusiness.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { RegisterclienteComponent } from '../registercliente/registercliente.component';
 // import { Vendedor } from '../models/model_vendedor';
 
 @Component({
@@ -47,8 +48,14 @@ export class MainHomeComponent implements OnInit {
     this._router.navigate(['/homebusiness']);
   }
 
-  dialogClientes() {
+  dialogRegisterBusiness() {
     const dialogRef = this.dialog.open(RegisterbusinessComponent, {
+      width: '800px', height: '550px',
+    })
+  }
+
+  dialogRegisterClientes() {
+    const dialogRef = this.dialog.open(RegisterclienteComponent, {
       width: '800px', height: '550px',
     })
   }

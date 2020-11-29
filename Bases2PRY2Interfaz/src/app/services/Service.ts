@@ -26,10 +26,16 @@ const httpOption = {
       private urlAddinInventary = '/getpAgragarAlInventario/';
       private urlGetFiltrarInventario = '/getpBuscarProductoCategoriaEnInvenatrio/';
       private urlUpdateInventary = '/getpUpadateInventario/';
+      private urlRegisterCliente = '/getpCrearPersonaCliente/'ñ
+      private urlLoginCliente = '/getpValidacionDeCliente/';
 
     constructor(
         private _http: HttpClient
       ){}
+
+    loginCliente(correoElectronico: string, contrasena: string, sede: string): Observable<any> {
+        return this._http.get(`${this.port}${this.urlLoginCliente}${correoElectronico}/${contrasena}`);
+    }
 
     loginTrabajador(correoElectronico: string, contrasena: string, sede: string): Observable<any> {
         return this._http.get(`${this.port}${this.urlLoginEmpleado}${correoElectronico}/${contrasena}`);
@@ -37,6 +43,11 @@ const httpOption = {
 
     registrarTrabajador(name: string, apellido1: string, apellido2: string, cedula: number, cel: number, correo: string, pass: string): Observable<any> {
       return this._http.get(`${this.port}${this.urlRegisterEmpleado}${cedula}/${name}/${apellido1}/${apellido2}/${cel}/${correo}/${pass}`);
+    }
+
+    registrarCliente(name: string, apellido1: string, apellido2: string, cedula: number, cel: number, correo: string, pass: string, provincia: string,
+      distrito: string, canton: string, bario: string, senna: string): Observable<any> {
+      return this._http.get(`${this.port}${this.urlRegisterCliente}${cedula}/${name}/${apellido1}/${apellido2}/${cel}/${correo}/${pass}/${senna}/${bario}/${distrito}/${canton}/${provincia}`);
     }
 
     addingNewCategory(nameCategory: string, descriptionCategory: string): Observable<any> {
