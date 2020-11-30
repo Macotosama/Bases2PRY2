@@ -44,6 +44,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DialoginventaryComponent } from './dialoginventary/dialoginventary.component';
 import { RegisterclienteComponent } from './registercliente/registercliente.component';
 import { CarritocompraComponent } from './carritocompra/carritocompra.component';
+import { CompraComponent } from './compra/compra.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { CarritocompraComponent } from './carritocompra/carritocompra.component'
     DialoginventaryComponent,
     RegisterclienteComponent,
     CarritocompraComponent,
+    CompraComponent,
   ],
   imports: [
     BrowserModule,

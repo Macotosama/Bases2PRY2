@@ -22,4 +22,10 @@ export class BarraClienteComponent {
   constructor(private breakpointObserver: BreakpointObserver) {
   }
 
+  actualizar(nuevoTotal: number): void {
+    this.total = nuevoTotal;
+    console.log(this.total)
+    // document.body.;
+  }
+
 }

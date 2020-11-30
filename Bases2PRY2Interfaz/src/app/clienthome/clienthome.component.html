@@ -45,7 +45,9 @@
                 <mat-card-title>{{item.nombreProducto}}</mat-card-title>
                 <mat-card-subtitle>Categoría: {{item.nombreCategoria}}</mat-card-subtitle>
                 </mat-card-header>
-                <img mat-card-image src="assets/{{item.imagen}}" alt="Foto del producto">
+                <div class="producto">
+                    <img mat-card-image src="assets/{{item.imagen}}" alt="Foto del producto">
+                </div>
                 <mat-card-content>
                 <p>
                     {{item.Descripcion_Producto}}<br><br>
@@ -53,8 +55,8 @@
                 </p>
                 </mat-card-content>
                 <mat-card-actions>
-                <button mat-button>Ver más</button>
-                <button mat-button>Comprar</button>
+                <button mat-button (click)="operProductView(item)">Ver más</button>
+                <button mat-button >Comprar</button>
                 <button mat-button (click)="agregarCarrito(item.precio, item)">Agregar al carrito</button>
                 </mat-card-actions>
             </mat-card>

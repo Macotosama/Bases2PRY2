@@ -1,1 +1,33 @@
-<p>product-view works!</p>
+<app-barra-cliente [total]="totalPadre" class="BarraMenu"></app-barra-cliente>
+<div class="a">
+    <div class="MainContainer">
+        <div class="containerleft">
+            <p class="tituloProducto">{{data.nombreProducto}}</p>
+            <img src="assets/{{data.imagen}}" alt="Imagen del producto" class="Producto">
+            <div>
+                <p>
+                    Descripcíon: {{data.Descripcion_Producto}}<br><br>
+                    Categoria: {{data.nombreCategoria}}<br><br>
+                    Precio: ₡{{data.precio}}<br><br>
+                    Disponibles: {{data.cantidad}}
+                </p>
+            </div>
+        </div>
+        <div class="containerRight">
+            <form>
+                <mat-form-field class="inputFromNameProduct" appearance="fill" >
+                    <mat-label>Cantidad</mat-label>
+                    <input type="number" matInput [formControl]="cantidadFormControl" placeholder="cantidad">
+                    <mat-error *ngIf="cantidadFormControl.invalid && !cantidadFormControl.hasError('required')">
+                        Ingrese una cantida <strong>válida</strong>
+                    </mat-error>
+                    <mat-error *ngIf="cantidadFormControl.hasError('required')">
+                        Porfavor ingrese la <strong>cantidad</strong>
+                    </mat-error>
+                </mat-form-field>
+            </form>
+            <button mat-button class="botonsito">Comprar</button>
+            <button mat-button class="botonsito" (click)="valiEntrada()">Agregar al carrito</button>
+        </div>
+    </div>
+</div>

@@ -9,6 +9,7 @@ import { InventarybranchComponent } from './inventarybranch/inventarybranch.comp
 import { ClienthomeComponent } from './clienthome/clienthome.component';
 import { RegisterbusinessComponent } from './registerbusiness/registerbusiness.component';
 import { RegisterclienteComponent } from './registercliente/registercliente.component';
+import { ProductViewComponent } from './product-view/product-view.component'
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'clienthome', component: ClienthomeComponent},
   {path: 'registerbusiness', component: RegisterbusinessComponent},
   {path: 'registercliente', component: RegisterbusinessComponent},
+  {path: 'productview/:Descripcion_Categoria/:Descripcion_Producto/:IdInventario/:cantidad/:idCategoria/:idProducto/:imagen/:nombreCategoria/:nombreProducto/:precio', component: ProductViewComponent},
 ];
 
 @NgModule({
