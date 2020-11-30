@@ -12,11 +12,11 @@
                 <form class="inputFromCorreoElectronico">
                         <mat-form-field class="inputFormFieldCorreoElectronico">
                         <mat-label>Correo electrónico</mat-label>
-                        <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
-                        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        <input type="email" matInput [formControl]="emailClienteFormControl" placeholder="Ex. pat@example.com">
+                        <mat-error *ngIf="emailClienteFormControl.hasError('email') && !emailClienteFormControl.hasError('required')">
                         Porfavor ingrese su correo electrónico
                         </mat-error>
-                        <mat-error *ngIf="emailFormControl.hasError('required')">
+                        <mat-error *ngIf="emailClienteFormControl.hasError('required')">
                         Porfavor ingrese su <strong>correo electrónico</strong>
                         </mat-error>
                     </mat-form-field>
@@ -27,18 +27,18 @@
                 <form class="inputFromContrasena">
                         <mat-form-field class="inputFormFieldContrasena">
                         <mat-label>Contraseña</mat-label>
-                        <input type="email" matInput [formControl]="numFormControl" placeholder="**********">
-                        <mat-error *ngIf="numFormControl.invalid && !emailFormControl.hasError('required')">
+                        <input type="email" matInput [formControl]="numCLienteFormControl" placeholder="**********">
+                        <mat-error *ngIf="numCLienteFormControl.invalid && !numCLienteFormControl.hasError('required')">
                         Contraseña incorrecta
                         </mat-error>
-                        <mat-error *ngIf="numFormControl.hasError('required')">
+                        <mat-error *ngIf="numCLienteFormControl.hasError('required')">
                         Porfavor ingrese la <strong>contraseña</strong>
                         </mat-error>
                     </mat-form-field>
                 </form>
             </div>
             <br>
-            <button mat-flat-button class="buttonLogin" [routerLink]="['/clienthome']">Aceptar</button>
+            <button mat-flat-button class="buttonLogin" (click)="validarCliente()">Aceptar</button>
             <br>
             <a class="linkRegister" (click)="dialogRegisterClientes()">Registrarse</a>
         </div>

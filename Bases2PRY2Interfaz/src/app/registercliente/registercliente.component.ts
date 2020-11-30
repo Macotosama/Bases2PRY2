@@ -75,6 +75,8 @@ export class RegisterclienteComponent implements OnInit {
       this.telefono.valid && this.correo.valid && this.contrasena.valid && this.provincia.valid && this.distrito.valid && this.canton.valid &&
       this.barrio.valid && this.senas.valid) {
         this.enviarInfo();
+      } else {
+        this.openSnackBar('Ingrese todos los datos')
       }
   }
 

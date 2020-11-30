@@ -27,6 +27,16 @@ export class MainHomeComponent implements OnInit {
     Validators.maxLength(16),
   ]);
 
+  emailClienteFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+
+  numCLienteFormControl = new FormControl('', [
+    Validators.required,
+    Validators.maxLength(16),
+  ]);
+
   constructor(private servicios: Service, public dialog: MatDialog, private _snackBar: MatSnackBar, private _router: Router) { }
 
   ngOnInit(): void {
@@ -41,11 +51,36 @@ export class MainHomeComponent implements OnInit {
     }
   }
 
+  validarCliente():void {
+    if (this.emailClienteFormControl.valid && this.numCLienteFormControl.valid) {
+      this.loginCliente();
+    } else {
+      this.openSnackBar('Ingrese sus credenciales');
+    }
+  }
+
   loginVendedor():void {
+    var vali;
     this.servicios.loginTrabajador(this.emailFormControl.value, this.numFormControl.value, this.sede).subscribe(Vendedor => {
-      localStorage.setItem('vendedor',Vendedor);
+      console.log(Vendedor)
+      if (Vendedor[0].result == 'false') {
+        this.openSnackBar('Su correo electrónico o su contreaseña esta equivocado');
+      } else {
+        localStorage.setItem('vendedor',JSON.stringify(Vendedor));
+        this._router.navigate(['/homebusiness']);
+      }
     });
-    this._router.navigate(['/homebusiness']);
+  }
+
+  loginCliente():void {
+    this.servicios.loginCliente(this.emailClienteFormControl.value, this.numCLienteFormControl.value, this.sede).subscribe(Vendedor => {
+      if (Vendedor[0].result == 'false') {
+        this.openSnackBar('Su correo electrónico o su contreaseña esta equivocado');
+      } else {
+        localStorage.setItem('vendedor',Vendedor);
+        this._router.navigate(['/clienthome']);
+      }
+    });
   }
 
   dialogRegisterBusiness() {

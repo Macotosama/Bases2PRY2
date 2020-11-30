@@ -2,6 +2,8 @@ import { Variable } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Service } from '../services/Service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-registerbusiness',
@@ -11,17 +13,14 @@ import { Service } from '../services/Service';
 export class RegisterbusinessComponent implements OnInit {
   public nombre = new FormControl('', [
     Validators.required,
-    Validators.pattern('[a-zA-Z ]*'),
     Validators.maxLength(30)
   ]);
   public apellido1 = new FormControl('', [
     Validators.required,
-    Validators.pattern('[a-zA-Z ]*'),
     Validators.maxLength(30)
   ]);
   public apellido2 = new FormControl('', [
     Validators.required,
-    Validators.pattern('[a-zA-Z ]*'),
     Validators.maxLength(30)
   ]);
   public cedula = new FormControl('', [
@@ -31,32 +30,26 @@ export class RegisterbusinessComponent implements OnInit {
   ]);
   public telefono = new FormControl('', [
     Validators.required,
-    Validators.pattern('[0-9 ]*'),
     Validators.maxLength(12)
   ]);
   public provincia = new FormControl('', [
     Validators.required,
-    Validators.pattern('[a-zA-Z ]*'),
     Validators.maxLength(30)
   ]);
   public distrito = new FormControl('', [
     Validators.required,
-    Validators.pattern('[a-zA-Z ]*'),
     Validators.maxLength(30)
   ]);
   public canton = new FormControl('', [
     Validators.required,
-    Validators.pattern('[a-zA-Z ]*'),
     Validators.maxLength(30)
   ]);
   public barrio = new FormControl('', [
     Validators.required,
-    Validators.pattern('[a-zA-Z ]*'),
     Validators.maxLength(30)
   ]);
   public senas = new FormControl('', [
     Validators.required,
-    Validators.pattern('[a-zA-Z ]*'),
     Validators.maxLength(50)
   ]);
 
@@ -74,16 +67,38 @@ export class RegisterbusinessComponent implements OnInit {
     Validators.maxLength(16),
   ]);
 
-  constructor(private servicios: Service) { }
+  constructor(private servicios: Service, private _snackBar: MatSnackBar,  public dialogRef: MatDialogRef<RegisterbusinessComponent>) { }
 
   ngOnInit(): void {
   }
 
+  validEntradas(): void {
+    if (this.nombre.valid && this.apellido1.valid && this.apellido2.valid && this.cedula.valid &&
+      this.telefono.valid && this.correo.valid && this.contrasena.valid && this.provincia.valid && this.distrito.valid && this.canton.valid &&
+      this.barrio.valid && this.senas.valid && this.sede.valid) {
+        this.enviarInfo();
+      } else {
+        this.openSnackBar('Ingrese todos los datos')
+      }
+  }
   enviarInfo():void {
     this.servicios.registrarTrabajador(this.nombre.value, this.apellido1.value,this.apellido2.value,this.cedula.value,
-      this.telefono.value, this.correo.value, this.contrasena.value).subscribe(Cliente => {
-        console.log(Cliente);
-      // this.contenidos = Cliente;
+      this.telefono.value, this.correo.value, this.contrasena.value, this.provincia.value, this.distrito.value, this.canton.value,
+      this.barrio.value, this.senas.value).subscribe(Cliente => {
+        if(Cliente[0].resutl == 'False') {
+          this.openSnackBar('Ya exites un usuario con esos credenciales')
+        } else {
+          this.openSnackBar('Vendedor registrado correctamente')
+          this.dialogRef.close();
+        }
+    });
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'OK', {
+      duration: 20000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
     });
   }
 
