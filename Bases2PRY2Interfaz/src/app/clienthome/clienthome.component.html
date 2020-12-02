@@ -4,8 +4,8 @@
         <div class="radioButtonContainer">
             <span class="tittleSucursal">Sucursal</span>
             <mat-radio-group aria-label="Select an option" [(ngModel)]="sede" class="radioButtonGroup">
-                <mat-radio-button value="limon" class="XD">Cartago</mat-radio-button>
-                <mat-radio-button value="cartago">Limón</mat-radio-button>
+                <mat-radio-button value="car" class="XD">Cartago</mat-radio-button>
+                <mat-radio-button value="lim">Limón</mat-radio-button>
             </mat-radio-group>
         </div>
         <div class="filterProduct">
@@ -38,34 +38,41 @@
             <button mat-flat-button class="buttonFiltro">Filtrar</button>
         </div>
     </div>
-    <div class="containerProduct">
-        <div *ngFor="let item of inventario | paginate: { itemsPerPage: 12, currentPage: p };" class=" cardContainer">
-            <mat-card class="example-card">
-                <mat-card-header>
-                <mat-card-title>{{item.nombreProducto}}</mat-card-title>
-                <mat-card-subtitle>Categoría: {{item.nombreCategoria}}</mat-card-subtitle>
-                </mat-card-header>
-                <div class="producto">
-                    <img mat-card-image src="assets/{{item.imagen}}" alt="Foto del producto">
-                </div>
-                <mat-card-content>
-                <p>
-                    {{item.Descripcion_Producto}}<br><br>
-                    Precio:₡ {{item.precio}}
-                </p>
-                </mat-card-content>
-                <mat-card-actions>
-                <button mat-button (click)="operProductView(item)">Ver más</button>
-                <button mat-button >Comprar</button>
-                <button mat-button (click)="agregarCarrito(item.precio, item)">Agregar al carrito</button>
-                </mat-card-actions>
-            </mat-card>
+    <div>
+        <div class="containerProduct">
+            <div *ngFor="let item of inventario | paginate: { itemsPerPage: 12, currentPage: p }" class=" cardContainer">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                    <mat-card-title>{{item.nombreProducto}}</mat-card-title>
+                    <mat-card-subtitle>Categoría: {{item.nombreCategoria}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <div class="producto">
+                        <img mat-card-image src="assets/{{item.imagen}}" alt="Foto del producto">
+                    </div>
+                    <mat-card-content>
+                    <p>
+                        {{item.Descripcion_Producto}}<br><br>
+                        Precio:₡ {{item.precio}}
+                    </p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                    <button mat-button (click)="operProductView(item)">Ver más</button>
+                    <!-- <button mat-button (click)="pagarUnProducto(item) ">Comprar</button> -->
+                    <!-- <button mat-button (click)="pagarCarrito() ">Comprar</button> -->
+                    <button mat-button (click)="agregarCarrito(item.precio, item)">Agregar al carrito</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
         </div>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </div>
-    <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>
 
 <!--
+
+
+
+    
     <cdk-virtual-scroll-viewport itemSize="50" class="fulscrolling">
         <div *cdkVirtualFor="let p of items" class="productos">
             {{p}}

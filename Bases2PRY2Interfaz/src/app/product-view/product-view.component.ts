@@ -4,6 +4,7 @@ import { Inventario, Carrito, ItemCarrito } from '../models/model_producto'
 import { FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Params } from '@angular/router';
+import { CompraComponent } from '../compra/compra.component';
 
 @Component({
   selector: 'app-product-view',
@@ -20,7 +21,7 @@ export class ProductViewComponent implements OnInit {
   totalPadre= 0;
   data: Inventario;
 
-  constructor(private _snackBar: MatSnackBar, private route: ActivatedRoute) { }
+  constructor(private _snackBar: MatSnackBar, private route: ActivatedRoute, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.crearProducto();
@@ -104,5 +105,11 @@ export class ProductViewComponent implements OnInit {
       verticalPosition: 'top',
     });
   }
+
+  pagarUnProducto(venta: Inventario):void {
+    const dialogRef = this.dialog.open(CompraComponent, {
+    width: '1000px', height: '650px', data: venta
+  })
+}
 
 }

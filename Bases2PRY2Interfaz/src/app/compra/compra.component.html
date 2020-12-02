@@ -1,1 +1,19 @@
-<p>compra works!</p>
+<div class="a">
+    <div class="MainContainer">
+        <div class="containerleft">
+            <p class="tituloProducto">{{data.nombreProducto}}</p>
+            <img src="assets/{{data.imagen}}" alt="Imagen del producto" class="Producto">
+            <div>
+                <p>
+                    Descripcíon: {{data.Descripcion_Producto}}<br><br>
+                    Categoria: {{data.nombreCategoria}}<br><br>
+                    Precio: ₡{{data.precio}}<br><br>
+                    Disponibles: {{data.cantidad}}
+                </p>
+            </div>
+        </div>
+        <div class="containerRight">
+            <button mat-button class="botonsito" (click)="enviarInfoPago(data)">Pagar</button>
+        </div>
+    </div>
+</div>

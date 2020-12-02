@@ -77,7 +77,7 @@ export class MainHomeComponent implements OnInit {
       if (Vendedor[0].result == 'false') {
         this.openSnackBar('Su correo electrónico o su contreaseña esta equivocado');
       } else {
-        localStorage.setItem('vendedor',Vendedor);
+        localStorage.setItem('cliente',JSON.stringify(Vendedor));
         this._router.navigate(['/clienthome']);
       }
     });

@@ -125,3 +125,17 @@
 .tittleSucursal {
   font-size: 2em;
 }
+
+.example-card {
+  height: 500px;
+}
+
+mat-card-content {
+  position: absolute;
+  top: 60%;
+}
+
+mat-card-actions {
+  position: absolute;
+  top: 90%;
+}

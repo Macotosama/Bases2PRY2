@@ -8,6 +8,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { ProductViewComponent } from '../product-view/product-view.component';
 import { BarraClienteComponent } from '../barra-cliente/barra-cliente.component';
 import { Router } from '@angular/router';
+import { CompraComponent } from '../compra/compra.component';
 
 @Component({
   selector: 'app-clienthome',
@@ -19,9 +20,9 @@ export class ClienthomeComponent implements OnInit {
 
   @ViewChild(BarraClienteComponent) hijo: BarraClienteComponent;
 
-  p: number = 1;
+  p: number;
   foods: string[] = [];
-  sede: string = 'limon'
+  sede: string = 'car'
   inventario: Inventario[];
   nameProduct =  new FormControl ('', [
     Validators.required,
@@ -36,10 +37,20 @@ export class ClienthomeComponent implements OnInit {
     this.crearCarrito();
   }
 
+  pagarCarrito():void {
+    var carrito: Carrito = JSON.parse(localStorage.getItem('carrito'));
+    this.servicio.pedirOrdenCompra().subscribe(res => {
+      this.servicio.crearFactura(this.sede, res).subscribe(xd => {
+        this.servicio.enviarPagoLista(carrito.productos, res).subscribe(xd2 => {
+          console.log(xd2)
+        })
+      })
+    });
+  }
+
   obtenerInventario():void {
     this.servicio.getInventary().subscribe(inventary => {
       this.inventario = inventary;
-      // console.log(this.inventario)
     })
   }
 
@@ -82,11 +93,12 @@ export class ClienthomeComponent implements OnInit {
         }
       })
       if (temp2) {
-        console.log('pero que pc')
         var temp:ItemCarrito = {
           strock: 1,
           producto: producto
         }
+        carrito.total += precio;
+        this.totalPadre += precio;
         carrito.productos.push(temp)
       }
     }
@@ -105,6 +117,12 @@ export class ClienthomeComponent implements OnInit {
       horizontalPosition: 'center',
       verticalPosition: 'top',
     });
+  }
+
+  pagarUnProducto(venta: Inventario):void {
+      const dialogRef = this.dialog.open(CompraComponent, {
+      width: '1000px', height: '650px', data: venta
+    })
   }
 
   operProductView(ventas: Inventario):void {

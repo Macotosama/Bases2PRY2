@@ -7,3 +7,8 @@ export interface Person {
     telefono: string;
     emaail: string;
 }
+
+export interface Cliente {
+    nickName: string,
+    cedulaCliente: number
+}

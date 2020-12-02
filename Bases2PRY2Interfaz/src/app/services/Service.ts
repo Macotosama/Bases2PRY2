@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Carrito, Inventario, ItemCarrito } from '../models/model_producto';
+import { Cliente } from '../models/model_person';
 
 const httpOption = {
     headers: new HttpHeaders({
@@ -29,10 +31,33 @@ const httpOption = {
       private urlRegisterCliente = '/getpCrearPersonaCliente/';
       private urlLoginCliente = '/getpValidacionDeCliente/';
       private urlValiInventario = '/getpValidarCantidadRequerida/';
+      private urlPagar = '/getpPagonPorInetervalos';
+      private urlOrdenCompra = '/getpCrearOrdenDeCompra';
+      private urlFactura = '/getpCrearFactura';
+      // private urlPagar = '/test';
 
     constructor(
         private _http: HttpClient
       ){}
+
+    crearFactura(sede: string, orde: any):Observable<any> {
+      return this._http.post(`${this.port}${this.urlFactura}`,{sede: sede, order: orde[0].IdOrdenDeCompra}, httpOption);
+    }
+
+    pedirOrdenCompra():Observable<any> {
+      var cliente:Cliente[] = JSON.parse(localStorage.getItem('cliente'));
+      return this._http.post(`${this.port}${this.urlOrdenCompra}`, cliente, httpOption);
+    }
+    enviarPagoLista(carri: ItemCarrito[], orde: any):Observable<any> {
+      console.log(orde, 'buenos dias')
+      return this._http.post(`${this.port}${this.urlPagar}`, [orde[0]].concat(carri), httpOption);
+    }
+
+    enviarPago(inventario: Inventario):Observable<any> {
+    console.log(inventario)
+      return this._http.post(`${this.port}${this.urlPagar}`, inventario, httpOption);
+      // return this._http.post(`${this.port}${this.urlPagar}`,inventario);
+    }
 
     ValidarInventario(id: number, stock: number): Observable<any>{
       return this._http.get(`${this.port}${this.urlValiInventario}${id}/${stock}`);
