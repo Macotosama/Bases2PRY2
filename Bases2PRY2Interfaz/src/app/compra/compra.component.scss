@@ -27,11 +27,16 @@
         justify-items: center;
 
         .botonsito {
+            font-size: 1.5em;
             color: white;
             background-color: #6550C5;
-            width: 10em;
+            width: 15em;
             height: 3em;
             border-radius: 30px;
         }
     }
+}
+
+.total {
+    font-size: 2em;
 }

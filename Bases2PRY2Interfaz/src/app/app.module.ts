@@ -45,6 +45,8 @@ import { DialoginventaryComponent } from './dialoginventary/dialoginventary.comp
 import { RegisterclienteComponent } from './registercliente/registercliente.component';
 import { CarritocompraComponent } from './carritocompra/carritocompra.component';
 import { CompraComponent } from './compra/compra.component';
+import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,7 @@ import { CompraComponent } from './compra/compra.component';
     RegisterclienteComponent,
     CarritocompraComponent,
     CompraComponent,
+    ShoppingcartComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,7 +97,8 @@ import { CompraComponent } from './compra/compra.component';
     MatRadioModule,
     HttpClientModule,
     MatDialogModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDividerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

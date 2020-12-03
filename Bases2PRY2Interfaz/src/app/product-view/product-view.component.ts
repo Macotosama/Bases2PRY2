@@ -16,7 +16,7 @@ export class ProductViewComponent implements OnInit {
   cantidadFormControl = new FormControl('',[
     Validators.required,
     Validators.pattern('[0-9 ]*'),
-  ])
+    ])
 
   totalPadre= 0;
   data: Inventario;
@@ -106,9 +106,25 @@ export class ProductViewComponent implements OnInit {
     });
   }
 
+  validEntrada2():void {
+    if (this.cantidadFormControl.valid) {
+      this.pagarUnProducto(this.data);
+    } else {
+      this.openSnackBar('Ingrese un monto valido');
+    }
+  }
+
   pagarUnProducto(venta: Inventario):void {
+    var xd1: ItemCarrito = {
+      strock: this.cantidadFormControl.value,
+      producto: venta
+    }
+    var xd: Carrito = {
+        total: (this.cantidadFormControl.value * venta.precio),
+        productos: [xd1]
+    }
     const dialogRef = this.dialog.open(CompraComponent, {
-    width: '1000px', height: '650px', data: venta
+    width: '1000px', height: '650px', data: xd
   })
 }
 

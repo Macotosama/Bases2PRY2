@@ -10,7 +10,7 @@ import { ClienthomeComponent } from './clienthome/clienthome.component';
 import { RegisterbusinessComponent } from './registerbusiness/registerbusiness.component';
 import { RegisterclienteComponent } from './registercliente/registercliente.component';
 import { ProductViewComponent } from './product-view/product-view.component'
-import { CompraComponent } from './compra/compra.component';
+import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'clienthome', component: ClienthomeComponent},
   {path: 'registerbusiness', component: RegisterbusinessComponent},
   {path: 'registercliente', component: RegisterbusinessComponent},
-  // {path: 'pagar', component: CompraComponent},
+  {path: 'cartshow', component: ShoppingcartComponent},
   {path: 'productview/:Descripcion_Categoria/:Descripcion_Producto/:IdInventario/:cantidad/:idCategoria/:idProducto/:imagen/:nombreCategoria/:nombreProducto/:precio', component: ProductViewComponent},
 ];
 

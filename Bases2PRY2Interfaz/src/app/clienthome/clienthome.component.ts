@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { Service } from '../services/Service'
-import { Carrito, Inventario, ItemCarrito } from '../models/model_producto'
+import { Service } from '../services/Service';
+import { Carrito, Inventario, ItemCarrito } from '../models/model_producto';
 import { element } from 'protractor';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -35,6 +35,7 @@ export class ClienthomeComponent implements OnInit {
   ngOnInit(): void {
     this.obtenerInventario();
     this.crearCarrito();
+    localStorage.setItem('sede', this.sede);
   }
 
   pagarCarrito():void {
@@ -126,18 +127,8 @@ export class ClienthomeComponent implements OnInit {
   }
 
   operProductView(ventas: Inventario):void {
-    // this._router.navigate(['/productview',JSON.stringify(ventas)])
     this._router.navigate(['/productview',`${ventas.Descripcion_Categoria}`,`${ventas.Descripcion_Producto}`,`${ventas.IdInventario}`,`${ventas.cantidad}`,`${ventas.idCategoria}`,
     `${ventas.idProducto}`,`${ventas.imagen}`,`${ventas.nombreCategoria}`,`${ventas.nombreProducto}`,`${ventas.precio}`])
   }
-
-  // dialogClientes(ventas: Inventario) {
-  //   const dialogRef = this.dialog.open(ProductViewComponent, {
-  //     width: '1000px', height: '650px', data: ventas
-  //   })
-  //   dialogRef.afterClosed().subscribe(res => {
-  //     this.actualizarValor();
-  //   })
-  // }
 
 }

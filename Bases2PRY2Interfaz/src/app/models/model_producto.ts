@@ -1,5 +1,5 @@
 export interface Carrito {
-    total: 0;
+    total: number;
     productos: Array<ItemCarrito>;
 }
 

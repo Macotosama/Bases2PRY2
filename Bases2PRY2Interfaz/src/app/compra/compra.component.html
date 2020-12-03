@@ -1,19 +1,34 @@
 <div class="a">
     <div class="MainContainer">
         <div class="containerleft">
-            <p class="tituloProducto">{{data.nombreProducto}}</p>
-            <img src="assets/{{data.imagen}}" alt="Imagen del producto" class="Producto">
-            <div>
+            <div *ngFor="let item of data.productos">
+                <p class="tituloProducto">{{item.producto.nombreProducto}}</p><br><br>
+                <img src="assets/{{item.producto.imagen}}" alt="Imagen del producto" class="Producto">
                 <p>
-                    Descripcíon: {{data.Descripcion_Producto}}<br><br>
-                    Categoria: {{data.nombreCategoria}}<br><br>
-                    Precio: ₡{{data.precio}}<br><br>
-                    Disponibles: {{data.cantidad}}
+                    <TR>
+                        <TD>Descripcíon:</TD> <TD>{{item.producto.Descripcion_Producto}}</TD>
+                    </TR>
+                    <TR>
+                        <TD>Categoria:</TD> <TD>{{item.producto.nombreCategoria}}</TD>
+                    </TR>
+                    <TR>
+                        <TD>Precio:</TD> <TD>₡{{item.producto.precio}}</TD>
+                    </TR>
+                    <br><br>
+                    <TR>
+                        <TD>Disponibles:</TD> <TD>{{item.producto.cantidad}}</TD>
+                    </TR>
+                    <TR>
+                        <TD>Solicitados:</TD> <TD>{{item.strock}}</TD>
+                    </TR>   
                 </p>
+                <hr>
             </div>
         </div>
         <div class="containerRight">
-            <button mat-button class="botonsito" (click)="enviarInfoPago(data)">Pagar</button>
+            <p class="total"><strong>Total: ₡{{data.total}}</strong></p>
+            <button mat-button class="botonsito" (click)="pagarCarrito()">Pagar</button>
+            <button mat-button class="botonsito" (click)="cancelar()">Cancelar</button>
         </div>
     </div>
 </div>

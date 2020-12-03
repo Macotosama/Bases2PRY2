@@ -34,7 +34,6 @@ const httpOption = {
       private urlPagar = '/getpPagonPorInetervalos';
       private urlOrdenCompra = '/getpCrearOrdenDeCompra';
       private urlFactura = '/getpCrearFactura';
-      // private urlPagar = '/test';
 
     constructor(
         private _http: HttpClient
