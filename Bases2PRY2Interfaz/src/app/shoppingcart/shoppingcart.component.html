@@ -1,13 +1,35 @@
 <app-barra-cliente [total]="totalPadre" class="BarraMenu"></app-barra-cliente>
 
 <div class="MainContainer">
+    <div class="pagar">
+        <span class="total">Total: ₡{{data.total}}</span><br>
+        <button mat-button class="botonsito1">Pagar</button>
+    </div>
     <div class="containerCenter" *ngFor="let item of data.productos">
 
 
-
+        <div class="Producto">
             <img src="assets/{{item.producto.imagen}}" alt="Imagen del producto" class="imagen">
+        </div>
 
-
+        <div class="productoContent">
+            <span class="tituloProducto">{{item.producto.nombreProducto}}</span>
+            <span>{{item.producto.Descripcion_Producto}}</span>
+            <span>Categoría: {{item.producto.nombreCategoria}}</span>
+            <span>Precio: ₡{{item.producto.precio}}</span>
+            <div class="accionesProduct"> 
+                <div class="cantidad">
+                    <form>
+                        <mat-form-field class="contProduct" appearance="fill" >
+                            <mat-label>Cantidad</mat-label>
+                            <input type="number" matInput name="Xd" id="{{item.producto.IdInventario}}" placeholder="cantidad" value="{{item.strock}}">
+                        </mat-form-field>
+                    </form>
+                    <button mat-button class="cantidadboton" (click)="actualizar(item.producto.IdInventario)">Actualizar</button>
+                </div>
+                <button mat-button class="botonsito" (click)="eliminar(item.producto.IdInventario)">Eliminar</button>
+            </div>
+        </div>
 
  
     </div>

@@ -1,5 +1,14 @@
 .imagen{
     width: 100%;
+    max-height: max-content;
+}
+
+.Producto {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    height: 200px;
+    align-items: center;
+    justify-items: center;
 }
 
 .MainContainer {
@@ -8,18 +17,82 @@
     // grid-template-rows: repeat(all,20%);
     // grid-auto-rows: 1%;
     width: 100%;
-    height: 100%;
-    align-items: center;
-    gap: 2em;   
+    // height: 100%;
+    // align-items: center;
+    justify-items: center;
+    gap: 1em;   
 }
 
 .containerCenter {
     box-shadow: 2px 2px 10px #666;
     display: grid;
-    height: 60%;
+    height: auto;
     grid-template-columns: 15% 85%;
-    width: 100%;
+    width: 90%;
     align-items: center;
     justify-items: center;
+    padding: 1em;
+    gap: 1em;
     // background-color: black;
+}
+
+.tituloProducto {
+    font-size: 2em;
+}
+
+.productoContent {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    gap: 1em;
+}
+
+.botonsito {
+    color: white;
+    background-color: #fd0000;
+    width: 10em;
+    height: 3em;
+    border-radius: 30px;
+}
+
+.accionesProduct {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.contProduct {
+    width: 5em;
+}
+
+.botonsito1 {
+    color: white;
+    background-color: #6550C5;
+    width: 10em;
+    height: 3em;
+    border-radius: 30px;
+}
+
+.total {
+    font-size: 1.5em;
+}
+
+.pagar {
+    width: 90%;
+}
+
+.cantidad {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 45%;
+    justify-items: center;
+    // align-items: end;
+    // background-color: black;
+}
+
+.cantidadboton {
+    color: white;
+    background-color: #6550C5;
+    width: 8em;
+    height: 3em;
+    border-radius: 30px;
 }
