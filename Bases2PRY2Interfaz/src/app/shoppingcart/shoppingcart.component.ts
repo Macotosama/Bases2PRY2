@@ -39,12 +39,7 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   actualizar(item:number):void {
-    // var nuevo = $("#XD").val()
-    // var input = document.getElementById('XD');
-    // var nuevo = input.Value;
-    // var nuevo = document.getElementsByName("xd").value;
     var nuevo = document.getElementById(`${item}`).value;
-    // var nuevo = document.getElementsByName("xd").value;
     var lista:ItemCarrito[] = this.data.productos;
     var cont = 0;
     for(let xd of lista) {
@@ -55,12 +50,12 @@ export class ShoppingcartComponent implements OnInit {
     }
     console.log(nuevo, 'Pos muy bien jovencito')
     if (nuevo > 0 && lista[cont].producto.cantidad >= nuevo) {
-      if(lista[cont].strock > nuevo && lista[cont].strock < nuevo) {
+      if(lista[cont].strock > nuevo || lista[cont].strock < nuevo) {
         this.data.total += (nuevo - lista[cont].strock) * lista[cont].producto.precio
         this.totalPadre += (nuevo - lista[cont].strock) * lista[cont].producto.precio
       }
     } else {
-      console.log(nuevo, 'Pos muy bien jovencito')
+      this.eliminar(item);
     }
   }
 
