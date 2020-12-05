@@ -11,6 +11,7 @@ import { RegisterbusinessComponent } from './registerbusiness/registerbusiness.c
 import { RegisterclienteComponent } from './registercliente/registercliente.component';
 import { ProductViewComponent } from './product-view/product-view.component'
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
+import { AdminhomeComponent } from './adminhome/adminhome.component'
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {path: 'registerbusiness', component: RegisterbusinessComponent},
   {path: 'registercliente', component: RegisterbusinessComponent},
   {path: 'cartshow', component: ShoppingcartComponent},
+  {path: 'adminhome', component: AdminhomeComponent},
   {path: 'productview/:Descripcion_Categoria/:Descripcion_Producto/:IdInventario/:cantidad/:idCategoria/:idProducto/:imagen/:nombreCategoria/:nombreProducto/:precio', component: ProductViewComponent},
 ];
 

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Carrito, Inventario, ItemCarrito } from '../models/model_producto';
 import { Cliente } from '../models/model_person';
+import { Certificate } from 'crypto';
 
 const httpOption = {
     headers: new HttpHeaders({
@@ -35,10 +36,40 @@ const httpOption = {
       private urlOrdenCompra = '/getpCrearOrdenDeCompra';
       private urlFactura = '/getpCrearFactura';
       private urlXDFilltroInventario = '/getpBuscarProductoCategoriaEnInvenatrio/';
+      private urlCrearAdmin = '/getpCrearPersonaCorp';
+      private urlValiCrearAdmin = '/getpValidarSiExiteUnCorporativo'
+      private urlLogin = '/getpValidarCorporativo/'
 
     constructor(
         private _http: HttpClient
       ){}
+
+    loginAdmin(correo: string, contra: string):Observable<any> {
+      return this._http.get(`${this.port}${this.urlLogin}${correo}/${contra}`)
+    }
+
+    registrarAdmin(name: string, apellido1: string, apellido2: string, cedula: number, cel: number, correo: string, pass: string, provincia: string,
+      distrito: string, canton: string, bario: string, senna: string): Observable<any> {
+      var temp = {
+        cedula: +cedula,
+        nombre: name,
+        apellido1: apellido1,
+        apellido2: apellido2,
+        telefono: +cel,
+        correo: correo,
+        password: pass,
+        senas: senna,
+        barrio: bario,
+        distrito: distrito,
+        canton: canton,
+        provincia: provincia
+      }
+      return this._http.post(`${this.port}${this.urlCrearAdmin}`, temp, httpOption);
+    }
+
+    valiRegisterAdmin(ce: number): Observable<any> {
+      return this._http.post(`${this.port}${this.urlValiCrearAdmin}`, {cedula: +ce}, httpOption)
+    }
 
     crearFactura(sede: string, orde: any):Observable<any> {
       return this._http.post(`${this.port}${this.urlFactura}`,{sede: sede, order: orde[0].IdOrdenDeCompra}, httpOption);

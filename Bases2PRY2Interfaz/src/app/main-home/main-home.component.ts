@@ -7,6 +7,7 @@ import { RegisterbusinessComponent } from '../registerbusiness/registerbusiness.
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RegisterclienteComponent } from '../registercliente/registercliente.component';
 import { Carrito, Inventario, ItemCarrito } from '../models/model_producto';
+import { RegisterdminComponent } from '../registerdmin/registerdmin.component'
 
 @Component({
   selector: 'app-main-home',
@@ -37,10 +38,28 @@ export class MainHomeComponent implements OnInit {
     Validators.maxLength(16),
   ]);
 
+  emailAdminFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
+
+  numAdminFormControl = new FormControl('', [
+    Validators.required,
+    Validators.maxLength(16),
+  ]);
+
   constructor(private servicios: Service, public dialog: MatDialog, private _snackBar: MatSnackBar, private _router: Router) { }
 
   ngOnInit(): void {
     localStorage.clear();
+  }
+
+  validarAdmin():void {
+    if (this.emailAdminFormControl.valid && this.numAdminFormControl.valid) {
+      this.loginAdmin();
+    } else {
+      this.openSnackBar('Ingrese sus credenciales');
+    }
   }
 
   validarVendedor():void {
@@ -57,6 +76,19 @@ export class MainHomeComponent implements OnInit {
     } else {
       this.openSnackBar('Ingrese sus credenciales');
     }
+  }
+
+  loginAdmin():void {
+    var vali;
+    this.servicios.loginAdmin(this.emailAdminFormControl.value, this.numAdminFormControl.value).subscribe(Vendedor => {
+      console.log(Vendedor)
+      if (Vendedor[0].result == 'false') {
+        this.openSnackBar('Su correo electrónico o su contreaseña esta equivocado');
+      } else {
+        localStorage.setItem('admin',JSON.stringify(Vendedor));
+        this._router.navigate(['/adminhome']);
+      }
+    });
   }
 
   loginVendedor():void {
@@ -100,6 +132,12 @@ export class MainHomeComponent implements OnInit {
 
   dialogRegisterClientes() {
     const dialogRef = this.dialog.open(RegisterclienteComponent, {
+      width: '800px', height: '550px',
+    })
+  }
+
+  dialogRegisterAdmin() {
+    const dialogRef = this.dialog.open(RegisterdminComponent, {
       width: '800px', height: '550px',
     })
   }

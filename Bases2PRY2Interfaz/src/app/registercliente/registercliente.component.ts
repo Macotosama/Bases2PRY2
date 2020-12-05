@@ -81,17 +81,22 @@ export class RegisterclienteComponent implements OnInit {
   }
 
   enviarInfo():void {
-
-    this.servicios.registrarCliente(this.nombre.value, this.apellido1.value,this.apellido2.value,this.cedula.value,
-      this.telefono.value, this.correo.value, this.contrasena.value, this.provincia.value, this.distrito.value, this.canton.value,
-      this.barrio.value, this.senas.value).subscribe(Cliente => {
-        if (Cliente[0].resut == 'False') {
-          this.openSnackBar('Ya existe un usuario con esa cédula')
-        } else {
-          this.openSnackBar('Se registro correctamente')
-          this.dialogRef.close();
-        }
-    });
+    this.servicios.valiRegisterAdmin(this.cedula.value).subscribe(res =>{
+      if(res[0].result == 'go') {
+        this.servicios.registrarCliente(this.nombre.value, this.apellido1.value,this.apellido2.value,this.cedula.value,
+          this.telefono.value, this.correo.value, this.contrasena.value, this.provincia.value, this.distrito.value, this.canton.value,
+          this.barrio.value, this.senas.value).subscribe(Cliente => {
+            if (Cliente[0].resut == 'False') {
+              this.openSnackBar('Ya existe un usuario con esa cédula')
+            } else {
+              this.openSnackBar('Se registro correctamente')
+              this.dialogRef.close();
+            }
+        });
+      } else {
+        this.openSnackBar(`La cédula ${this.cedula.value} ya existe.`)
+      }
+    })
   }
 
   openSnackBar(message: string) {

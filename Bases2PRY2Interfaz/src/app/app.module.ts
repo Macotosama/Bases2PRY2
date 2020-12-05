@@ -48,6 +48,8 @@ import { CompraComponent } from './compra/compra.component';
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import { MatDividerModule } from '@angular/material/divider';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
+import { AdminbarraComponent } from './adminbarra/adminbarra.component';
+import { RegisterdminComponent } from './registerdmin/registerdmin.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,8 @@ import { AdminhomeComponent } from './adminhome/adminhome.component';
     CompraComponent,
     ShoppingcartComponent,
     AdminhomeComponent,
+    AdminbarraComponent,
+    RegisterdminComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,16 +1,16 @@
-import { Variable } from '@angular/compiler/src/render3/r3_ast';
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Service } from '../services/Service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-registerbusiness',
-  templateUrl: './registerbusiness.component.html',
-  styleUrls: ['./registerbusiness.component.scss']
+  selector: 'app-registerdmin',
+  templateUrl: './registerdmin.component.html',
+  styleUrls: ['./registerdmin.component.scss']
 })
-export class RegisterbusinessComponent implements OnInit {
+export class RegisterdminComponent implements OnInit {
+
   public nombre = new FormControl('', [
     Validators.required,
     Validators.maxLength(30)
@@ -30,6 +30,7 @@ export class RegisterbusinessComponent implements OnInit {
   ]);
   public telefono = new FormControl('', [
     Validators.required,
+    Validators.pattern('[0-9 ]*'),
     Validators.maxLength(12)
   ]);
   public provincia = new FormControl('', [
@@ -53,10 +54,6 @@ export class RegisterbusinessComponent implements OnInit {
     Validators.maxLength(50)
   ]);
 
-  public sede = new FormControl('', [
-    Validators.required
-  ]);
-
   public correo = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -67,7 +64,8 @@ export class RegisterbusinessComponent implements OnInit {
     Validators.maxLength(16),
   ]);
 
-  constructor(private servicios: Service, private _snackBar: MatSnackBar,  public dialogRef: MatDialogRef<RegisterbusinessComponent>) { }
+
+  constructor(private servicios: Service, private _snackBar: MatSnackBar, public dialogRef: MatDialogRef<RegisterdminComponent>) { }
 
   ngOnInit(): void {
   }
@@ -75,22 +73,23 @@ export class RegisterbusinessComponent implements OnInit {
   validEntradas(): void {
     if (this.nombre.valid && this.apellido1.valid && this.apellido2.valid && this.cedula.valid &&
       this.telefono.valid && this.correo.valid && this.contrasena.valid && this.provincia.valid && this.distrito.valid && this.canton.valid &&
-      this.barrio.valid && this.senas.valid && this.sede.valid) {
+      this.barrio.valid && this.senas.valid) {
         this.enviarInfo();
       } else {
         this.openSnackBar('Ingrese todos los datos')
       }
   }
+
   enviarInfo():void {
     this.servicios.valiRegisterAdmin(this.cedula.value).subscribe(res =>{
       if(res[0].result == 'go') {
-        this.servicios.registrarTrabajador(this.nombre.value, this.apellido1.value,this.apellido2.value,this.cedula.value,
+        this.servicios.registrarAdmin(this.nombre.value, this.apellido1.value,this.apellido2.value,this.cedula.value,
           this.telefono.value, this.correo.value, this.contrasena.value, this.provincia.value, this.distrito.value, this.canton.value,
           this.barrio.value, this.senas.value).subscribe(Cliente => {
-            if(Cliente[0].resutl == 'False') {
-              this.openSnackBar('Ya exites un usuario con esos credenciales')
+            if (Cliente[0].result == 'False') {
+              this.openSnackBar('Ya existe un usuario con esa cédula')
             } else {
-              this.openSnackBar('Vendedor registrado correctamente')
+              this.openSnackBar('Se registro correctamente')
               this.dialogRef.close();
             }
         });
