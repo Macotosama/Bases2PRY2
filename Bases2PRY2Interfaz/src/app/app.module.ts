@@ -50,6 +50,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { AdminbarraComponent } from './adminbarra/adminbarra.component';
 import { RegisterdminComponent } from './registerdmin/registerdmin.component';
+import { InventarioAdminComponent } from './inventario-admin/inventario-admin.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { RegisterdminComponent } from './registerdmin/registerdmin.component';
     AdminhomeComponent,
     AdminbarraComponent,
     RegisterdminComponent,
+    InventarioAdminComponent,
   ],
   imports: [
     BrowserModule,
