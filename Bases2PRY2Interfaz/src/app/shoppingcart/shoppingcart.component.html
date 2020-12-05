@@ -3,7 +3,7 @@
 <div class="MainContainer">
     <div class="pagar">
         <span class="total">Total: ₡{{data.total}}</span><br>
-        <button mat-button class="botonsito1">Pagar</button>
+        <button mat-button class="botonsito1" (click)="pagarCarrito()">Pagar</button>
     </div>
     <div class="containerCenter" *ngFor="let item of data.productos">
 

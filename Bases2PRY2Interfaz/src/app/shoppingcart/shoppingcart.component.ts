@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Inventario, ItemCarrito, Carrito} from '../models/model_producto';
+import { Service } from '../services/Service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-shoppingcart',
@@ -13,7 +15,7 @@ export class ShoppingcartComponent implements OnInit {
 
   displayedColumns = ['image', 'producto', 'categoria', 'precio', 'cantidad', 'accion']
 
-  constructor() { }
+  constructor(private servicio: Service, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.data = JSON.parse(localStorage.getItem('carrito'));
@@ -31,7 +33,6 @@ export class ShoppingcartComponent implements OnInit {
         lista.splice(cont, cont+1);
         this.data.productos = lista;
         localStorage.setItem('carrito', JSON.stringify(this.data));
-        console.log(lista)
         break;
       }
       cont++;
@@ -39,7 +40,8 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   actualizar(item:number):void {
-    var nuevo = document.getElementById(`${item}`).value;
+    var temp = (<HTMLInputElement>document.getElementById(`${item}`)).value;
+    var nuevo:number = +temp
     var lista:ItemCarrito[] = this.data.productos;
     var cont = 0;
     for(let xd of lista) {
@@ -48,15 +50,51 @@ export class ShoppingcartComponent implements OnInit {
       }
       cont++;
     }
-    console.log(nuevo, 'Pos muy bien jovencito')
     if (nuevo > 0 && lista[cont].producto.cantidad >= nuevo) {
       if(lista[cont].strock > nuevo || lista[cont].strock < nuevo) {
         this.data.total += (nuevo - lista[cont].strock) * lista[cont].producto.precio
         this.totalPadre += (nuevo - lista[cont].strock) * lista[cont].producto.precio
+        lista[cont].strock = nuevo;
+        this.data.productos = lista;
+        localStorage.setItem('carrito', JSON.stringify(this.data));
       }
     } else {
       this.eliminar(item);
     }
+  }
+
+  pagarCarrito():void {
+    if (this.totalPadre != 0) {
+      this.servicio.pedirOrdenCompra().subscribe(res => {
+        var temp:string = localStorage.getItem('sede')
+        this.servicio.crearFactura(localStorage.getItem('sede'), res).subscribe(xd => {
+          this.servicio.enviarPagoLista(this.data.productos, res).subscribe(xd2 => {
+            if (xd2.msg == 'Tranasferencia exitosa') {
+              var joder: Carrito = {
+                total: 0,
+                productos: []
+              }
+              localStorage.setItem('carrito', JSON.stringify(joder));
+              this.data = joder;
+              this.totalPadre = 0;
+              this.openSnackBar('Producto comprado')
+            } else {
+              this.openSnackBar('No hay suficientes en el inventario')
+            }
+          })
+        })
+      });
+    } else {
+      this.openSnackBar('No hay productos en el carrito')
+    }
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'OK', {
+      duration: 20000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+    });
   }
 
 }

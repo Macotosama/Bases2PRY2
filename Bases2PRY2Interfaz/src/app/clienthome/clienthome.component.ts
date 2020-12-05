@@ -19,7 +19,7 @@ import { CompraComponent } from '../compra/compra.component';
 export class ClienthomeComponent implements OnInit {
 
   @ViewChild(BarraClienteComponent) hijo: BarraClienteComponent;
-
+  public categorys: any[];
   p: number;
   foods: string[] = [];
   sede: string = 'car'
@@ -28,39 +28,58 @@ export class ClienthomeComponent implements OnInit {
     Validators.required,
     Validators.maxLength(16),
   ]);
+
+  categoriasControl = new FormControl ('', [
+  ]);
+
+  nameProductForm = new FormControl ('', [])
   totalPadre = 0;
 
   constructor(private servicio: Service,  private _snackBar: MatSnackBar, public dialog: MatDialog, private _router: Router) { }
 
   ngOnInit(): void {
     this.obtenerInventario();
-    this.crearCarrito();
+    this.getOnlyNameCategory();
+    this.obtenerCarrrito();
     localStorage.setItem('sede', this.sede);
   }
 
-  pagarCarrito():void {
-    var carrito: Carrito = JSON.parse(localStorage.getItem('carrito'));
-    this.servicio.pedirOrdenCompra().subscribe(res => {
-      this.servicio.crearFactura(this.sede, res).subscribe(xd => {
-        this.servicio.enviarPagoLista(carrito.productos, res).subscribe(xd2 => {
-          console.log(xd2)
-        })
-      })
+  filterInventary():void {
+    var produc;
+    var category;
+    if (this.nameProductForm.value == '') {
+       produc = 'null'
+      } else {
+        produc = this.nameProductForm.value
+      }
+    if (this.categoriasControl.value == '')  {
+      category = 0
+    } else {
+      category = this.categoriasControl.value
+    }
+    console.log(produc, category)
+    this.servicio.getFiltroInventaryCliente(produc, category).subscribe(res => {
+      console.log(res)
+      this.inventario = res;
+    })
+  }
+
+  getOnlyNameCategory():void {
+    this.servicio.getNameCategory().subscribe(category => {
+      this.categorys = category;
     });
   }
 
   obtenerInventario():void {
     this.servicio.getInventary().subscribe(inventary => {
+      console.log(inventary)
       this.inventario = inventary;
     })
   }
 
-  crearCarrito():void {
-    var carro: Carrito = {
-      total: 0,
-      productos: []
-    };
-    localStorage.setItem('carrito', JSON.stringify(carro));
+  obtenerCarrrito():void {
+    var carrito: Carrito = JSON.parse(localStorage.getItem('carrito'));
+    this.totalPadre = carrito.total;
   }
 
   agregarCarrito(precio: number, producto: Inventario):void {

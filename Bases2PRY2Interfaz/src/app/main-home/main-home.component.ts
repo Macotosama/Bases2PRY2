@@ -6,7 +6,7 @@ import { Service } from '../services/Service';
 import { RegisterbusinessComponent } from '../registerbusiness/registerbusiness.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { RegisterclienteComponent } from '../registercliente/registercliente.component';
-// import { Vendedor } from '../models/model_vendedor';
+import { Carrito, Inventario, ItemCarrito } from '../models/model_producto';
 
 @Component({
   selector: 'app-main-home',
@@ -77,10 +77,19 @@ export class MainHomeComponent implements OnInit {
       if (Vendedor[0].result == 'false') {
         this.openSnackBar('Su correo electrónico o su contreaseña esta equivocado');
       } else {
+        this.crearCarrito();
         localStorage.setItem('cliente',JSON.stringify(Vendedor));
         this._router.navigate(['/clienthome']);
       }
     });
+  }
+
+  crearCarrito():void {
+    var carro: Carrito = {
+      total: 0,
+      productos: []
+    };
+    localStorage.setItem('carrito', JSON.stringify(carro));
   }
 
   dialogRegisterBusiness() {

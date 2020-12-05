@@ -34,6 +34,7 @@ const httpOption = {
       private urlPagar = '/getpPagonPorInetervalos';
       private urlOrdenCompra = '/getpCrearOrdenDeCompra';
       private urlFactura = '/getpCrearFactura';
+      private urlXDFilltroInventario = '/getpBuscarProductoCategoriaEnInvenatrio/';
 
     constructor(
         private _http: HttpClient
@@ -115,6 +116,10 @@ const httpOption = {
 
     getFiltroInventary(producto: string, idCategoria: number): Observable<any> {
       return this._http.get(`${this.port}${this.urlGetFiltrarInventario}${producto}/${idCategoria}`);
+    }
+
+    getFiltroInventaryCliente(producto: string, idCategoria: number): Observable<any> {
+      return this._http.get(`${this.port}${this.urlXDFilltroInventario}${producto}/${idCategoria}`);
     }
 
     getUpateInventary(idInventary: number, idProduct: number, cantidad: number): Observable<any> {

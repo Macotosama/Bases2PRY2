@@ -26,6 +26,7 @@ export class CompraComponent implements OnInit {
         this.servicio.enviarPagoLista(this.data.productos, res).subscribe(xd2 => {
           if (xd2.msg == 'Tranasferencia exitosa') {
             this.openSnackBar('Producto comprado')
+            this.dialogRef.close();
           } else {
             this.openSnackBar('No hay suficientes en el inventario')
           }

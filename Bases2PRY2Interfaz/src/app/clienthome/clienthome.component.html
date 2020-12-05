@@ -12,14 +12,8 @@
             <div class="imputNamePorduc">
                 <form>
                     <mat-form-field class="inputFromNameProduct">
-                        <mat-label>Cliente</mat-label>
-                        <input type="text" matInput [formControl]="nameProduct" placeholder="Nombre">
-                        <mat-error *ngIf="nameProduct.invalid && !nameProduct.hasError('required')">
-                        Porfavor ingrese su correo electrónico
-                        </mat-error>
-                        <mat-error *ngIf="nameProduct.hasError('required')">
-                        Porfavor ingrese su <strong>correo electrónico</strong>
-                        </mat-error>
+                        <mat-label>Producto</mat-label>
+                        <input type="text" matInput [formControl]="nameProductForm" placeholder="Nombre">
                     </mat-form-field>
                 </form>
             </div>
@@ -27,15 +21,16 @@
                 <form>
                     <mat-form-field class="selecteFormCategory">
                         <mat-label>Categoria</mat-label>
-                        <mat-select>
-                        <mat-option *ngFor="let food of foods" [value]="food">
-                            {{food}}
+                        <mat-select [formControl]="categoriasControl">
+                        <mat-option></mat-option>
+                        <mat-option *ngFor="let food of categorys" [value]="food.idCategoria">
+                            {{food.nombreCategoria}}
                         </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </form>
             </div>
-            <button mat-flat-button class="buttonFiltro">Filtrar</button>
+            <button mat-flat-button class="buttonFiltro" (click)="filterInventary()">Filtrar</button>
         </div>
     </div>
     <div>

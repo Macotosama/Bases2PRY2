@@ -47,6 +47,7 @@ import { CarritocompraComponent } from './carritocompra/carritocompra.component'
 import { CompraComponent } from './compra/compra.component';
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import { MatDividerModule } from '@angular/material/divider';
+import { AdminhomeComponent } from './adminhome/adminhome.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { MatDividerModule } from '@angular/material/divider';
     CarritocompraComponent,
     CompraComponent,
     ShoppingcartComponent,
+    AdminhomeComponent,
   ],
   imports: [
     BrowserModule,
