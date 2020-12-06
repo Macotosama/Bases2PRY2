@@ -1,15 +1,15 @@
 .containertable {
-    width: 100em;
-    height: 50em;
-    background-color: #BC88F8;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    border-radius: 30px;
-    margin: 16px;
-    padding: 16px;
+  width: 100em;
+  height: 50em;
+  background-color: #BC88F8;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  border-radius: 30px;
+  margin: 16px;
+  padding: 16px;
 }
 .radioButtonContainer {
-    width: 100%;
+    width: 90%;
     padding: 1em;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -27,6 +27,8 @@
   }
 
   .maincontainer {
+    position: absolute;
+    top: 13%;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 1em;
@@ -97,4 +99,9 @@
     justify-items: center;
     gap: 2em;
   }
+
+  span {
+    font-size: 3em;
+    padding: 1em;
+}
   

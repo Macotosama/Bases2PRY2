@@ -1,0 +1,106 @@
+.containertable {
+    width: 100em;
+    height: 50em;
+    background-color: #BC88F8;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    border-radius: 30px;
+    margin: 16px;
+    padding: 16px;
+  }
+  .radioButtonContainer {
+      width: 90%;
+      padding: 1em;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1em;
+      align-items: center;
+      justify-items: center;
+    }
+    
+    .mat-radio-button ~ .mat-radio-button {
+      margin-left: 2em;
+    }
+    
+    .tittleSucursal {
+      font-size: 2em;
+    }
+  
+    .maincontainer {
+      position: absolute;
+      top: 13%;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1em;
+      align-items: center;
+      justify-items: center;
+      width: 100%;
+    }
+  
+    .filterProduct {
+      background-color: #BC88F8;
+      border-radius: 50px;
+      width: 80%;
+      height: 6em;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      align-items: center;
+      justify-items: center;
+    }
+  
+    .imputNamePorduc {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      justify-items: center;
+      background-color: white;
+      border-radius: 30px;
+      width: 300px;
+      height: 65px;
+      align-items: center;
+    }
+    
+    .inputFromNameProduct {
+      justify-items: center;
+      width: 250px;
+    }
+    
+    .selectCategory {
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      justify-items: center;
+      background-color: white;
+      border-radius: 30px;
+      width: 300px;
+      height: 65px;
+      align-items: center;
+    }
+  
+    .selecteFormCategory {
+      background-color: transparent;
+      width: 250px;
+      height: 200px;
+      border-radius: 30px;
+    }
+    
+    .buttonFiltro {
+      color: white;
+      background-color: #6550C5;
+      width: 10em;
+      height: 3em;
+      border-radius: 30px;
+    }
+  
+    .containerPositionFilter {
+      width: 100%;
+      // height: 10%;
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      align-items: center;
+      justify-items: center;
+      gap: 2em;
+    }
+  
+    span {
+      font-size: 3em;
+      padding: 1em;
+  }

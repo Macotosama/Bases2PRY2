@@ -51,6 +51,8 @@ import { AdminhomeComponent } from './adminhome/adminhome.component';
 import { AdminbarraComponent } from './adminbarra/adminbarra.component';
 import { RegisterdminComponent } from './registerdmin/registerdmin.component';
 import { InventarioAdminComponent } from './inventario-admin/inventario-admin.component';
+import { TotalsucursalComponent } from './totalsucursal/totalsucursal.component';
+import { TotaltotalComponent } from './totaltotal/totaltotal.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +77,8 @@ import { InventarioAdminComponent } from './inventario-admin/inventario-admin.co
     AdminbarraComponent,
     RegisterdminComponent,
     InventarioAdminComponent,
+    TotalsucursalComponent,
+    TotaltotalComponent,
   ],
   imports: [
     BrowserModule,

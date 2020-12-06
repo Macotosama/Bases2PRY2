@@ -13,6 +13,8 @@ import { ProductViewComponent } from './product-view/product-view.component'
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import { AdminhomeComponent } from './adminhome/adminhome.component'
 import { InventarioAdminComponent } from './inventario-admin/inventario-admin.component';
+import { TotalsucursalComponent } from './totalsucursal/totalsucursal.component';
+import { TotaltotalComponent } from './totaltotal/totaltotal.component'
 
 const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -28,6 +30,7 @@ const routes: Routes = [
   {path: 'cartshow', component: ShoppingcartComponent},
   {path: 'adminhome', component: AdminhomeComponent},
   {path: 'admininventary', component: InventarioAdminComponent},
+  {path: 'totalsucursal', component: TotalsucursalComponent},
   {path: 'productview/:Descripcion_Categoria/:Descripcion_Producto/:IdInventario/:cantidad/:idCategoria/:idProducto/:imagen/:nombreCategoria/:nombreProducto/:precio', component: ProductViewComponent},
 ];
 

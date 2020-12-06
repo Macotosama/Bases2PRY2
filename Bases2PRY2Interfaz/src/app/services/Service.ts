@@ -39,10 +39,21 @@ const httpOption = {
       private urlCrearAdmin = '/getpCrearPersonaCorp';
       private urlValiCrearAdmin = '/getpValidarSiExiteUnCorporativo';
       private urlLogin = '/getpValidarCorporativo/';
+      private urlTotalSucursal = '/getpTotalesDeFacturas';
 
     constructor(
         private _http: HttpClient
-      ){}
+    ){}
+
+    totalPorSede(categoria: number ,fecha: Date, fecha2: Date, sede: string):Observable<any> {
+      var c = {
+        fecha1: `${fecha.getFullYear()}-${fecha.getMonth()+1}-${fecha.getDate()}`,
+        fecha2: `${fecha2.getFullYear()}-${fecha2.getMonth()+1}-${fecha2.getDate()}`,
+        categoria: categoria,
+        sede: sede
+      }
+      return this._http.post(`${this.port}${this.urlTotalSucursal}`, c, httpOption)
+    }
 
     loginAdmin(correo: string, contra: string):Observable<any> {
       return this._http.get(`${this.port}${this.urlLogin}${correo}/${contra}`)
