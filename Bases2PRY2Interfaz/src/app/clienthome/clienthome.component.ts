@@ -47,12 +47,12 @@ export class ClienthomeComponent implements OnInit {
   filterInventary():void {
     var produc;
     var category;
-    if (this.nameProductForm.value == '') {
+    if (this.nameProductForm.value == '' || this.nameProductForm.value == null) {
        produc = 'null'
       } else {
         produc = this.nameProductForm.value
       }
-    if (this.categoriasControl.value == '')  {
+    if (this.categoriasControl.value == '' || this.nameProductForm.value == null)  {
       category = 0
     } else {
       category = this.categoriasControl.value

@@ -37,8 +37,8 @@ const httpOption = {
       private urlFactura = '/getpCrearFactura';
       private urlXDFilltroInventario = '/getpBuscarProductoCategoriaEnInvenatrio/';
       private urlCrearAdmin = '/getpCrearPersonaCorp';
-      private urlValiCrearAdmin = '/getpValidarSiExiteUnCorporativo'
-      private urlLogin = '/getpValidarCorporativo/'
+      private urlValiCrearAdmin = '/getpValidarSiExiteUnCorporativo';
+      private urlLogin = '/getpValidarCorporativo/';
 
     constructor(
         private _http: HttpClient
