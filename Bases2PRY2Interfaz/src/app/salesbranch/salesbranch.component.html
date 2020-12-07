@@ -28,23 +28,44 @@
                 </mat-error>
             </mat-form-field>
         </form>
-        <button mat-flat-button class="buttonFiltro">Filtrar</button>
+        <button mat-flat-button class="buttonFiltro" (click)="filtrar()">Filtrar</button>
     </div>
     <div class="containertable">
         <table mat-table [dataSource]="categorys" class="mat-elevation-z8">
 
             <!--- Note that these columns can be defined in any order.
+                'nombre', 'apellid1', 'apellid2', 'cantidad', 'monto', 'telefono'
                   The actual rendered columns are set as a property on the row definition" -->
           
             <!-- Position Column -->
-            <ng-container matColumnDef="category">
+            <ng-container matColumnDef="nombre">
               <th mat-header-cell *matHeaderCellDef> Categorías </th>
-              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+              <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="descriptor">
+            <ng-container matColumnDef="apellid1">
                 <th mat-header-cell *matHeaderCellDef> Descripción </th>
-                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.apellido1}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="apellid2">
+                <th mat-header-cell *matHeaderCellDef> Descripción </th>
+                <td mat-cell *matCellDef="let element"> {{element.apellido2}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="cantidad">
+                <th mat-header-cell *matHeaderCellDef> Descripción </th>
+                <td mat-cell *matCellDef="let element"> {{element.cantidad}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="telefono">
+                <th mat-header-cell *matHeaderCellDef> Descripción </th>
+                <td mat-cell *matCellDef="let element"> {{element.telefono}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="monto">
+                <th mat-header-cell *matHeaderCellDef> Descripción </th>
+                <td mat-cell *matCellDef="let element"> {{element.monto}} </td>
               </ng-container>
           
             <tr mat-header-row *matHeaderRowDef="columns"></tr>

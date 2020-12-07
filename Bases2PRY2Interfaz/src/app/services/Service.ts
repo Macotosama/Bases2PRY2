@@ -66,6 +66,7 @@ const httpOption = {
         fecha: `${fecha.getFullYear()}-${fecha.getMonth()+1}-${fecha.getDate()}`,
         factura: factura
       }
+      console.log(c)
       return this._http.post(`${urlTemp}${this.urlFaturasLocales}`, c, httpOption)
     }
 
