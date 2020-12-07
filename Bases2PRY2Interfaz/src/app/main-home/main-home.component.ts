@@ -16,7 +16,7 @@ import { RegisterdminComponent } from '../registerdmin/registerdmin.component'
 })
 export class MainHomeComponent implements OnInit {
 
-  sede: string = 'limon'
+  sede: string = 'car';
 
   emailFormControl = new FormControl('', [
     Validators.required,
@@ -83,7 +83,7 @@ export class MainHomeComponent implements OnInit {
     this.servicios.loginAdmin(this.emailAdminFormControl.value, this.numAdminFormControl.value).subscribe(Vendedor => {
       console.log(Vendedor)
       if (Vendedor[0].result == 'false') {
-        this.openSnackBar('Su correo electrónico o su contreaseña esta equivocado');
+        this.openSnackBar('Su correo electrónico o su contreaseña esta equivocada');
       } else {
         localStorage.setItem('admin',JSON.stringify(Vendedor));
         this._router.navigate(['/adminhome']);
@@ -96,9 +96,10 @@ export class MainHomeComponent implements OnInit {
     this.servicios.loginTrabajador(this.emailFormControl.value, this.numFormControl.value, this.sede).subscribe(Vendedor => {
       console.log(Vendedor)
       if (Vendedor[0].result == 'false') {
-        this.openSnackBar('Su correo electrónico o su contreaseña esta equivocado');
+        this.openSnackBar('Su correo electrónico o su contreaseña esta equivocada');
       } else {
-        localStorage.setItem('vendedor',JSON.stringify(Vendedor));
+        localStorage.setItem('vendedor',JSON.stringify(Vendedor[0]));
+        localStorage.setItem('sede',`${this.sede}`)
         this._router.navigate(['/homebusiness']);
       }
     });
@@ -107,7 +108,7 @@ export class MainHomeComponent implements OnInit {
   loginCliente():void {
     this.servicios.loginCliente(this.emailClienteFormControl.value, this.numCLienteFormControl.value, this.sede).subscribe(Vendedor => {
       if (Vendedor[0].result == 'false') {
-        this.openSnackBar('Su correo electrónico o su contreaseña esta equivocado');
+        this.openSnackBar('Su correo electrónico o su contreaseña esta equivocada');
       } else {
         this.crearCarrito();
         localStorage.setItem('cliente',JSON.stringify(Vendedor));

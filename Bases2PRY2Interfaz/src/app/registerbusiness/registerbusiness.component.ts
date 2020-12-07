@@ -82,11 +82,11 @@ export class RegisterbusinessComponent implements OnInit {
       }
   }
   enviarInfo():void {
-    this.servicios.valiRegisterAdmin(this.cedula.value).subscribe(res =>{
+    this.servicios.valiVendedorAdmin(this.cedula.value, this.sede.value).subscribe(res =>{
       if(res[0].result == 'go') {
         this.servicios.registrarTrabajador(this.nombre.value, this.apellido1.value,this.apellido2.value,this.cedula.value,
           this.telefono.value, this.correo.value, this.contrasena.value, this.provincia.value, this.distrito.value, this.canton.value,
-          this.barrio.value, this.senas.value).subscribe(Cliente => {
+          this.barrio.value, this.senas.value, this.sede.value).subscribe(Cliente => {
             if(Cliente[0].resutl == 'False') {
               this.openSnackBar('Ya exites un usuario con esos credenciales')
             } else {

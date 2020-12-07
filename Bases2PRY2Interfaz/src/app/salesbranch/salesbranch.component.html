@@ -7,32 +7,24 @@
         <form class="inputFromCorreoElectronico">
             <mat-form-field class="unput" appearance="fill">
                 <mat-label>Cliente</mat-label>
-                <input type="email" matInput [formControl]="NumFacturaFormControl" placeholder="Ex. pat@example.com">
-                <mat-error *ngIf="NumFacturaFormControl.invalid && !NumFacturaFormControl.hasError('required')">
-                Porfavor ingrese su correo electrónico
-                </mat-error>
-                <mat-error *ngIf="NumFacturaFormControl.hasError('required')">
-                Porfavor ingrese su <strong>correo electrónico</strong>
+                <input type="text" matInput [formControl]="NammeFacturaFormControl" placeholder="Ex. Name">
+                <mat-error *ngIf="NammeFacturaFormControl.invalid && !NammeFacturaFormControl.hasError('required')">
+                Exedio el tamaño máximo
                 </mat-error>
             </mat-form-field>
         </form>
-        <form class="inputFromCorreoElectronico">
             <mat-form-field color="accent" appearance="fill" class="unput">
-                <mat-label>Inherited calendar color</mat-label>
-                <input matInput [matDatepicker]="picker1">
+                <mat-label>Fecha</mat-label>
+                <input matInput [matDatepicker]="picker1" [(ngModel)]="date2">
                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                 <mat-datepicker #picker1></mat-datepicker>
             </mat-form-field>
-        </form>
         <form class="inputFromCorreoElectronico">
             <mat-form-field class="unput" appearance="fill">
                 <mat-label>N° de factura</mat-label>
-                <input type="email" matInput [formControl]="NumFacturaFormControl" placeholder="Ex. pat@example.com">
+                <input type="number" matInput [formControl]="NumFacturaFormControl" placeholder="Ex. 111111">
                 <mat-error *ngIf="NumFacturaFormControl.invalid && !NumFacturaFormControl.hasError('required')">
                 Porfavor ingrese su correo electrónico
-                </mat-error>
-                <mat-error *ngIf="NumFacturaFormControl.hasError('required')">
-                Porfavor ingrese su <strong>correo electrónico</strong>
                 </mat-error>
             </mat-form-field>
         </form>

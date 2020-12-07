@@ -8,8 +8,14 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class SalesbranchComponent implements OnInit {
   public date = '';
+  public date2 = new Date();
 
   NumFacturaFormControl =  new FormControl ('', [
+    Validators.required,
+    Validators.maxLength(16),
+  ]);
+
+  NammeFacturaFormControl =  new FormControl ('', [
     Validators.required,
     Validators.maxLength(16),
   ]);

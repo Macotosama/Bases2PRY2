@@ -198,8 +198,8 @@
             <mat-form-field class="selecteFormSede">
                 <mat-label>Sede*</mat-label>
                 <mat-select [formControl]="sede">
-                <mat-option value="cartago">Cartago</mat-option>
-                <mat-option value="limon">Limón</mat-option>
+                <mat-option value="car">Cartago</mat-option>
+                <mat-option value="lim">Limón</mat-option>
                 </mat-select>
                 <mat-error *ngIf="senas.hasError('required')">
                     Porfavor escoja su <strong>sede</strong>.
@@ -209,88 +209,3 @@
     </div>
     <button mat-flat-button class="buttonLogin" (click)="validEntradas()">Aceptar</button>
 </div>
-
-<!--
-<div class="maincontainer">
-    <div>
-        <form>
-            <mat-form-field>
-                <mat-label>Nombre*</mat-label>
-                <input matInput placeholder="Nombre" [(ngModel)]="nombre">
-            </mat-form-field>
-        </form>
-        <form>
-            <mat-form-field>
-                <mat-label>Apellido 1*</mat-label>
-                <input matInput placeholder="Apellido 1" [(ngModel)]="apellido1">
-            </mat-form-field>
-        </form>
-        <form>
-            <mat-form-field>
-                <mat-label>Apellido 2*</mat-label>
-                <input matInput placeholder="Apellido 2" [(ngModel)]="apellido2">
-            </mat-form-field>
-        </form>
-        <form>
-            <mat-form-field>
-                <mat-label>Cedula*</mat-label>
-                <input matInput placeholder="Cedula" [(ngModel)]="cedula">
-            </mat-form-field>
-        </form>
-        <form>
-            <mat-form-field>
-                <mat-label>Teléfono*</mat-label>
-                <input matInput placeholder="telefono" [(ngModel)]="telefono">
-            </mat-form-field>
-        </form>
-        <form>
-            <mat-form-field>
-                <mat-label>Correo Electrónico*</mat-label>
-                <input matInput placeholder="Correo Electrónico" [(ngModel)]="correo">
-            </mat-form-field>
-        </form>
-    </div>
-    <div>
-        <form>
-            <mat-form-field>
-                <mat-label>Provincia*</mat-label>
-                <input matInput placeholder="Provincia" [(ngModel)]="provincia">
-            </mat-form-field>
-        </form>
-        <form>
-            <mat-form-field>
-                <mat-label>Distrito*</mat-label>
-                <input matInput placeholder="Distrito" [(ngModel)]="distrito">
-            </mat-form-field>
-        </form>
-        <form>
-            <mat-form-field>
-                <mat-label>Canton*</mat-label>
-                <input matInput placeholder="Canton" [(ngModel)]="canton">
-            </mat-form-field>
-        </form>
-        <form>
-            <mat-form-field>
-                <mat-label>Barrio*</mat-label>
-                <input matInput placeholder="Barrio" [(ngModel)]="barrio">
-            </mat-form-field>
-        </form>
-        <form>
-            <mat-form-field>
-                <mat-label>Señas*</mat-label>
-                <input matInput placeholder="Señas" [(ngModel)]="senas">
-            </mat-form-field>
-        </form>
-        <form>
-            <mat-form-field class="selecteFormSede">
-                <mat-label>Sede*</mat-label>
-                <mat-select [(ngModel)]="sede">
-                <mat-option value="cartago">Cartago</mat-option>
-                <mat-option value="limon">Limón</mat-option>
-                </mat-select>
-            </mat-form-field>
-        </form>
-    </div>
-    <button mat-flat-button class="buttonLogin">Aceptar</button>
-</div>
--->

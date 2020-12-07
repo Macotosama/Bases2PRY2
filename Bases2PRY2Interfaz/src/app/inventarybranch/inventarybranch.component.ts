@@ -44,7 +44,7 @@ export class InventarybranchComponent implements OnInit {
   constructor(private servicio: Service, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.getInventario();
+    this.valiSede();
     this.getOnlyNameCategory();
     this.getProductos();
   }
@@ -57,14 +57,22 @@ export class InventarybranchComponent implements OnInit {
       } else {
         produc = this.nameProductForm.value
       }
-    if (this.CategoryForm.value == '')  {
+    if (this.CategoryForm.value == '' || this.CategoryForm.value == null)  {
       category = 0
     } else {
       category = this.CategoryForm.value
     }
-    this.servicio.getFiltroInventary(produc, category).subscribe(res => {
-      this.inventario = res;
-    })
+    var sede = localStorage.getItem('sede')
+    if(sede == 'car') {
+      this.servicio.getFiltroInventary(produc, category).subscribe(res => {
+        this.inventario = res;
+      })
+    } else {
+      this.servicio.getFiltroInventaryLim(produc, category).subscribe(res => {
+        this.inventario = res;
+      })
+    }
+
   }
 
   validFiltrar():void {
@@ -84,14 +92,29 @@ export class InventarybranchComponent implements OnInit {
   }
 
   addingInvantary():void {
-    this.servicio.addingInventary(this.productControl.value, this.stockControl.value).subscribe(res => {
+    var sede = localStorage.getItem('sede')
+    this.servicio.addingInventary(this.productControl.value, this.stockControl.value, sede).subscribe(res => {
       if (res[0].result == 'True') {
         this.openSnackBar('Se agrego correctamente al inventario');
       } else {
         this.openSnackBar('Ya existe el producto en el invantario');
       }
-      this.getInventario();
+      if(sede == 'car') {
+        this.getInventario();
+      } else {
+        this.getInventarioLim();
+      }
+      
     });
+  }
+
+  valiSede() {
+    var sede = localStorage.getItem('sede')
+    if(sede == 'car') {
+      this.getInventario();
+    } else {
+      this.getInventarioLim();
+    }
   }
 
   getProductos():void {
@@ -108,6 +131,12 @@ export class InventarybranchComponent implements OnInit {
 
   getInventario():void {
     this.servicio.getInventary().subscribe(inventario => {
+      this.inventario = inventario;
+    });
+  }
+
+  getInventarioLim():void {
+    this.servicio.getInventaryLim().subscribe(inventario => {
       this.inventario = inventario;
     });
   }

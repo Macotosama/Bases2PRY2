@@ -18,6 +18,7 @@ const httpOption = {
   export class Service {
       private port = 'http://localhost:8000';
       private portAdmin = 'http://localhost:8500';
+      private portLim = 'http://localhost:8100';
 
       private urlLoginEmpleado = '/getpValidacionDeVendedor/';
       private urlRegisterEmpleado = '/getpCrearPersonaVendedor/';
@@ -46,10 +47,27 @@ const httpOption = {
       private urlTotaltotal = '/getpTotalConsolidado';
       private urlInventarioAdminCar = '/getpRetornoInventarioCartago';
       private urlInventarioAdminLim = '/getpRetornoInventariLimon';
+      private urlExisteVendedor = '/getpValidarSiExiteUnVendedor';
+      private urlFaturasLocales = '/getpRetornoFacturas';
 
     constructor(
         private _http: HttpClient
     ){}
+
+    getFacturasLocales(sede: string, nombre: string, fecha: Date, factura: number):Observable<any> {
+      var urlTemp
+      if (sede == 'car') {
+        urlTemp = this.port;
+      } else {
+        urlTemp = this.portLim
+      }
+      var c = {
+        nombre: nombre,
+        fecha: `${fecha.getFullYear()}-${fecha.getMonth()+1}-${fecha.getDate()}`,
+        factura: factura
+      }
+      return this._http.post(`${urlTemp}${this.urlFaturasLocales}`, c, httpOption)
+    }
 
     inventarioCar():Observable<any> {
       return this._http.get(`${this.portAdmin}${this.urlInventarioAdminCar}`)
@@ -121,6 +139,16 @@ const httpOption = {
       return this._http.post(`${this.port}${this.urlValiCrearAdmin}`, {cedula: +ce}, httpOption)
     }
 
+    valiVendedorAdmin(ce: number, sede: string): Observable<any> {
+      var urlTemp
+      if (sede == 'car') {
+        urlTemp = this.port;
+      } else {
+        urlTemp = this.portLim
+      }
+      return this._http.post(`${urlTemp}${this.urlExisteVendedor}`, {cedula: +ce}, httpOption)
+    }
+
     crearFactura(sede: string, orde: any):Observable<any> {
       return this._http.post(`${this.port}${this.urlFactura}`,{sede: sede, order: orde[0].IdOrdenDeCompra}, httpOption);
     }
@@ -149,12 +177,24 @@ const httpOption = {
     }
 
     loginTrabajador(correoElectronico: string, contrasena: string, sede: string): Observable<any> {
-        return this._http.get(`${this.port}${this.urlLoginEmpleado}${correoElectronico}/${contrasena}`);
+      var urlTemp
+      if (sede == 'car') {
+        urlTemp = this.port;
+      } else {
+        urlTemp = this.portLim
+      }
+      return this._http.get(`${urlTemp}${this.urlLoginEmpleado}${correoElectronico}/${contrasena}`);
     }
 
     registrarTrabajador(name: string, apellido1: string, apellido2: string, cedula: number, cel: number, correo: string, pass: string, provincia: string,
-      distrito: string, canton: string, bario: string, senna: string): Observable<any> {
-      return this._http.get(`${this.port}${this.urlRegisterEmpleado}${cedula}/${name}/${apellido1}/${apellido2}/${cel}/${correo}/${pass}/${senna}/${bario}/${distrito}/${canton}/${provincia}`);
+      distrito: string, canton: string, bario: string, senna: string, sede: string): Observable<any> {
+        var urlTemp
+        if (sede == 'car') {
+          urlTemp = this.port;
+        } else {
+          urlTemp = this.portLim
+        }
+      return this._http.get(`${urlTemp}${this.urlRegisterEmpleado}${cedula}/${name}/${apellido1}/${apellido2}/${cel}/${correo}/${pass}/${senna}/${bario}/${distrito}/${canton}/${provincia}`);
     }
 
     registrarCliente(name: string, apellido1: string, apellido2: string, cedula: number, cel: number, correo: string, pass: string, provincia: string,
@@ -187,17 +227,32 @@ const httpOption = {
       return this._http.get(`${this.port}${this.urlGetOnlyNameProduct}`);
     }
 
-    addingInventary(name: number, stock: number): Observable<any> {
-      return this._http.get(`${this.port}${this.urlAddinInventary}${name}/${stock}`);
+    addingInventary(name: number, stock: number, sede: string): Observable<any> {
+      var urlTemp: string;
+      if (sede == 'car') {
+        urlTemp = this.port;
+      } else {
+        urlTemp = this.portLim
+      }
+      return this._http.get(`${urlTemp}${this.urlAddinInventary}${name}/${stock}`);
     }
 
     getInventary(): Observable<any> {
       return this._http.get(`${this.port}${this.urlGetInventary}`);
     }
 
+    getInventaryLim(): Observable<any> {
+      return this._http.get(`${this.portLim}${this.urlGetInventary}`);
+    }
+
     getFiltroInventary(producto: string, idCategoria: number): Observable<any> {
       return this._http.get(`${this.port}${this.urlGetFiltrarInventario}${producto}/${idCategoria}`);
     }
+
+    getFiltroInventaryLim(producto: string, idCategoria: number): Observable<any> {
+      return this._http.get(`${this.portLim}${this.urlGetFiltrarInventario}${producto}/${idCategoria}`);
+    }
+
 
     getFiltroInventaryCliente(producto: string, idCategoria: number): Observable<any> {
       return this._http.get(`${this.port}${this.urlXDFilltroInventario}${producto}/${idCategoria}`);
