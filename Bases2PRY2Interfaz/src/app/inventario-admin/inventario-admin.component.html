@@ -7,8 +7,8 @@
         <div class="radioButtonContainer">
             <span class="tittleSucursal">Sucursal</span>
             <mat-radio-group aria-label="Select an option" [(ngModel)]="sede" class="radioButtonGroup">
-                <mat-radio-button value="car" class="XD">Cartago</mat-radio-button>
-                <mat-radio-button value="lim">Limón</mat-radio-button>
+                <mat-radio-button value="car" class="XD" (click)="cambioSede('car')">Cartago</mat-radio-button>
+                <mat-radio-button value="lim" (click)="cambioSede('lim')">Limón</mat-radio-button>
             </mat-radio-group>
         </div>
         <div class="filterProduct">

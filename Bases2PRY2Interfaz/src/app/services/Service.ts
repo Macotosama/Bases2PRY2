@@ -17,6 +17,8 @@ const httpOption = {
 
   export class Service {
       private port = 'http://localhost:8000';
+      private portAdmin = 'http://localhost:8500';
+
       private urlLoginEmpleado = '/getpValidacionDeVendedor/';
       private urlRegisterEmpleado = '/getpCrearPersonaVendedor/';
       private urlAddCategory = '/getpCrearNevaCategoria/';
@@ -39,20 +41,57 @@ const httpOption = {
       private urlCrearAdmin = '/getpCrearPersonaCorp';
       private urlValiCrearAdmin = '/getpValidarSiExiteUnCorporativo';
       private urlLogin = '/getpValidarCorporativo/';
-      private urlTotalSucursal = '/getpTotalesDeFacturas';
+      private urlTotalSucursalLim = '/getpTotalesDeFacturas';
+      private urlTotalSucursalCar = '/getpTotalesDeFacturasCartago';
+      private urlTotaltotal = '/getpTotalConsolidado';
+      private urlInventarioAdminCar = '/getpRetornoInventarioCartago';
+      private urlInventarioAdminLim = '/getpRetornoInventariLimon';
 
     constructor(
         private _http: HttpClient
     ){}
 
+    inventarioCar():Observable<any> {
+      return this._http.get(`${this.portAdmin}${this.urlInventarioAdminCar}`)
+    }
+
+    inventarioLim():Observable<any> {
+      return this._http.get(`${this.portAdmin}${this.urlInventarioAdminLim}`)
+    }
+
+    inventarioAdmin(sede:string, producto: string, idCategoria: number):Observable<any> {
+      var urlTemp
+      if (sede == 'car') {
+        urlTemp = this.urlTotalSucursalCar
+      } else {
+        urlTemp = this.urlTotalSucursalLim
+      }
+      return this._http.get(`${this.portAdmin}${this.urlXDFilltroInventario}${producto}/${idCategoria}`);
+    }
+
+    totaltotal (categoria: number ,fecha: Date, fecha2: Date):Observable<any> {
+      var c = {
+        fecha1: `${fecha.getFullYear()}-${fecha.getMonth()+1}-${fecha.getDate()}`,
+        fecha2: `${fecha2.getFullYear()}-${fecha2.getMonth()+1}-${fecha2.getDate()}`,
+        categoria: categoria,
+      }
+      return this._http.post(`${this.portAdmin}${this.urlTotaltotal}`, c, httpOption)
+    }
+
     totalPorSede(categoria: number ,fecha: Date, fecha2: Date, sede: string):Observable<any> {
+      var urlTemp
+      if (sede == 'car') {
+        urlTemp = this.urlTotalSucursalCar
+      } else {
+        urlTemp = this.urlTotalSucursalLim
+      }
       var c = {
         fecha1: `${fecha.getFullYear()}-${fecha.getMonth()+1}-${fecha.getDate()}`,
         fecha2: `${fecha2.getFullYear()}-${fecha2.getMonth()+1}-${fecha2.getDate()}`,
         categoria: categoria,
         sede: sede
       }
-      return this._http.post(`${this.port}${this.urlTotalSucursal}`, c, httpOption)
+      return this._http.post(`${this.portAdmin}${urlTemp}`, c, httpOption)
     }
 
     loginAdmin(correo: string, contra: string):Observable<any> {

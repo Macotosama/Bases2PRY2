@@ -28,13 +28,9 @@ export class TotaltotalComponent implements OnInit {
   
   filterInventary():void {
     if (this.date <= this.date2) {
-      if (this.categoriasControl.valid){
-        this.servicio.totalPorSede(this.categoriasControl.value, this.date, this.date2, this.sede).subscribe(res => {
-          this.inventario = res;
-        })
-      } else {
-        this.openSnackBar('Ingrese la categoria')
-      }
+      this.servicio.totaltotal(this.categoriasControl.value, this.date, this.date2).subscribe(res => {
+        this.inventario = res;
+      })
     } else {
       this.openSnackBar('Ingrese fechas validas')
       this.date = new Date();

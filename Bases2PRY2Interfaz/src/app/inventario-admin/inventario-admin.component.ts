@@ -26,12 +26,27 @@ export class InventarioAdminComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOnlyNameCategory();
-    this.obtenerInventario();
+    this.obtenerInventarioCar();
   }
 
-  obtenerInventario():void {
-    this.servicio.getInventary().subscribe(inventary => {
+  cambioSede(xd: string):void {
+    this.sede = xd
+    if(xd == 'car') {
+      this.obtenerInventarioCar();
+    } else {
+      this.obtenerInventarioLim();
+    }
+  }
+
+  obtenerInventarioCar():void {
+    this.servicio.inventarioCar().subscribe(inventary => {
       console.log(inventary)
+      this.inventario = inventary;
+    })
+  }
+
+  obtenerInventarioLim():void {
+    this.servicio.inventarioLim().subscribe(inventary => {
       this.inventario = inventary;
     })
   }
@@ -50,9 +65,7 @@ export class InventarioAdminComponent implements OnInit {
     } else {
       category = this.categoriasControl.value
     }
-    console.log(produc, this.categoriasControl.value)
-    this.servicio.getFiltroInventaryCliente(produc, category).subscribe(res => {
-      console.log(res)
+    this.servicio.inventarioAdmin(this.sede ,produc, category).subscribe(res => {
       this.inventario = res;
     })
   }

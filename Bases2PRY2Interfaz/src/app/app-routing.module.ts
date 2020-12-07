@@ -31,6 +31,7 @@ const routes: Routes = [
   {path: 'adminhome', component: AdminhomeComponent},
   {path: 'admininventary', component: InventarioAdminComponent},
   {path: 'totalsucursal', component: TotalsucursalComponent},
+  {path: 'totaltotal', component: TotaltotalComponent},
   {path: 'productview/:Descripcion_Categoria/:Descripcion_Producto/:IdInventario/:cantidad/:idCategoria/:idProducto/:imagen/:nombreCategoria/:nombreProducto/:precio', component: ProductViewComponent},
 ];
 
