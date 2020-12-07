@@ -38,30 +38,46 @@ export class ClienthomeComponent implements OnInit {
   constructor(private servicio: Service,  private _snackBar: MatSnackBar, public dialog: MatDialog, private _router: Router) { }
 
   ngOnInit(): void {
-    this.obtenerInventario();
+    this.obtenerInventarioCar();
     this.getOnlyNameCategory();
     this.obtenerCarrrito();
     localStorage.setItem('sede', this.sede);
   }
 
+  cambioSede(xd: string):void {
+    localStorage.setItem('sede',xd)
+    if(xd == 'car') {
+      this.obtenerInventarioCar();
+    } else {
+      this.obtenerInventarioLim();
+    }
+  }
+
   filterInventary():void {
     var produc;
-    var category;
+    var category = 0;
     if (this.nameProductForm.value == '' || this.nameProductForm.value == null) {
        produc = 'null'
-      } else {
-        produc = this.nameProductForm.value
-      }
-    if (this.categoriasControl.value == '' || this.nameProductForm.value == null)  {
+    } else {
+      produc = this.nameProductForm.value
+    }
+    
+    if (this.categoriasControl.value == '' || this.categoriasControl.value == null)  {
       category = 0
     } else {
       category = this.categoriasControl.value
     }
     console.log(produc, category)
-    this.servicio.getFiltroInventaryCliente(produc, category).subscribe(res => {
-      console.log(res)
-      this.inventario = res;
-    })
+    var sede = localStorage.getItem('sede');
+    if (sede == 'car') {
+      this.servicio.getFiltroInventaryCliente(produc, category).subscribe(res => {
+        this.inventario = res;
+      })
+    } else {
+      this.servicio.getFiltroInventaryClienteLimon(produc, category).subscribe(res => {
+        this.inventario = res;
+      })
+    }
   }
 
   getOnlyNameCategory():void {
@@ -70,8 +86,14 @@ export class ClienthomeComponent implements OnInit {
     });
   }
 
-  obtenerInventario():void {
+  obtenerInventarioCar():void {
     this.servicio.getInventary().subscribe(inventary => {
+      console.log(inventary)
+      this.inventario = inventary;
+    })
+  }
+  obtenerInventarioLim():void {
+    this.servicio.getInventaryLim().subscribe(inventary => {
       console.log(inventary)
       this.inventario = inventary;
     })

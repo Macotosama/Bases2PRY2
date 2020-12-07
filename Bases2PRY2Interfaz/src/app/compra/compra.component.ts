@@ -20,10 +20,11 @@ export class CompraComponent implements OnInit {
   }
 
   pagarCarrito():void {
-    this.servicio.pedirOrdenCompra().subscribe(res => {
+    var sede = localStorage.getItem('sede');
+    this.servicio.pedirOrdenCompra(sede).subscribe(res => {
       var temp:string = localStorage.getItem('sede')
       this.servicio.crearFactura(localStorage.getItem('sede'), res).subscribe(xd => {
-        this.servicio.enviarPagoLista(this.data.productos, res).subscribe(xd2 => {
+        this.servicio.enviarPagoLista(sede, this.data.productos, res).subscribe(xd2 => {
           if (xd2.msg == 'Tranasferencia exitosa') {
             this.openSnackBar('Producto comprado')
             this.dialogRef.close();

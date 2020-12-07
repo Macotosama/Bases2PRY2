@@ -66,7 +66,6 @@ const httpOption = {
         fecha: `${fecha.getFullYear()}-${fecha.getMonth()+1}-${fecha.getDate()}`,
         factura: factura
       }
-      console.log(c)
       return this._http.post(`${urlTemp}${this.urlFaturasLocales}`, c, httpOption)
     }
 
@@ -151,22 +150,44 @@ const httpOption = {
     }
 
     crearFactura(sede: string, orde: any):Observable<any> {
-      return this._http.post(`${this.port}${this.urlFactura}`,{sede: sede, order: orde[0].IdOrdenDeCompra}, httpOption);
+      var urlTemp
+      if (sede == 'car') {
+        urlTemp = this.port;
+      } else {
+        urlTemp = this.portLim
+      }
+      return this._http.post(`${urlTemp}${this.urlFactura}`,{sede: sede, order: orde[0].IdOrdenDeCompra}, httpOption);
     }
 
-    pedirOrdenCompra():Observable<any> {
+    pedirOrdenCompra(sede: string):Observable<any> {
+      var urlTemp
+      if (sede == 'car') {
+        urlTemp = this.port;
+      } else {
+        urlTemp = this.portLim
+      }
       var cliente:Cliente[] = JSON.parse(localStorage.getItem('cliente'));
-      return this._http.post(`${this.port}${this.urlOrdenCompra}`, cliente, httpOption);
+      return this._http.post(`${urlTemp}${this.urlOrdenCompra}`, cliente, httpOption);
     }
-    enviarPagoLista(carri: ItemCarrito[], orde: any):Observable<any> {
-      console.log(orde, 'buenos dias')
-      return this._http.post(`${this.port}${this.urlPagar}`, [orde[0]].concat(carri), httpOption);
+
+    pedirOrdenCompraLim():Observable<any> {
+      var cliente:Cliente[] = JSON.parse(localStorage.getItem('cliente'));
+      return this._http.post(`${this.portLim}${this.urlOrdenCompra}`, cliente, httpOption);
+    }
+
+    enviarPagoLista(sede: string, carri: ItemCarrito[], orde: any):Observable<any> {
+      var urlTemp
+      if (sede == 'car') {
+        urlTemp = this.port;
+      } else {
+        urlTemp = this.portLim
+      }
+      return this._http.post(`${urlTemp}${this.urlPagar}`, [orde[0]].concat(carri), httpOption);
     }
 
     enviarPago(inventario: Inventario):Observable<any> {
     console.log(inventario)
       return this._http.post(`${this.port}${this.urlPagar}`, inventario, httpOption);
-      // return this._http.post(`${this.port}${this.urlPagar}`,inventario);
     }
 
     ValidarInventario(id: number, stock: number): Observable<any>{
@@ -257,6 +278,10 @@ const httpOption = {
 
     getFiltroInventaryCliente(producto: string, idCategoria: number): Observable<any> {
       return this._http.get(`${this.port}${this.urlXDFilltroInventario}${producto}/${idCategoria}`);
+    }
+
+    getFiltroInventaryClienteLimon(producto: string, idCategoria: number): Observable<any> {
+      return this._http.get(`${this.portLim}${this.urlXDFilltroInventario}${producto}/${idCategoria}`);
     }
 
     getUpateInventary(idInventary: number, idProduct: number, cantidad: number): Observable<any> {

@@ -64,11 +64,12 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   pagarCarrito():void {
+    var sede = localStorage.getItem('sede');
     if (this.totalPadre != 0) {
-      this.servicio.pedirOrdenCompra().subscribe(res => {
+      this.servicio.pedirOrdenCompra(sede).subscribe(res => {
         var temp:string = localStorage.getItem('sede')
         this.servicio.crearFactura(localStorage.getItem('sede'), res).subscribe(xd => {
-          this.servicio.enviarPagoLista(this.data.productos, res).subscribe(xd2 => {
+          this.servicio.enviarPagoLista(sede, this.data.productos, res).subscribe(xd2 => {
             if (xd2.msg == 'Tranasferencia exitosa') {
               var joder: Carrito = {
                 total: 0,
