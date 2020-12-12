@@ -93,6 +93,7 @@ const httpOption = {
         fecha2: `${fecha2.getFullYear()}-${fecha2.getMonth()+1}-${fecha2.getDate()}`,
         categoria: categoria,
       }
+      console.log(c)
       return this._http.post(`${this.portAdmin}${this.urlTotaltotal}`, c, httpOption)
     }
 
