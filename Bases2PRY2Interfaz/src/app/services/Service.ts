@@ -166,7 +166,8 @@ const httpOption = {
       } else {
         urlTemp = this.portLim
       }
-      var cliente:Cliente[] = JSON.parse(localStorage.getItem('cliente'));
+      var cliente:Cliente = JSON.parse(localStorage.getItem('cliente'));
+      console.log)JSON.parse(localStorage.getItem('cliente'));
       console.log(cliente, sede)
       return this._http.post(`${urlTemp}${this.urlOrdenCompra}`, cliente, httpOption);
     }
